@@ -367,7 +367,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 2b8819499dd9ce34298af572f80d8c01, type: 3}
       propertyPath: m_Name
-      value: Lsobj_hnw_dream
+      value: NPC
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
