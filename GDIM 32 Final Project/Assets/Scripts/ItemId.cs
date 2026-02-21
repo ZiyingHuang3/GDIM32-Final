@@ -5,9 +5,10 @@ using UnityEngine;
 public enum ItemId
 
 {
-    Doll,
+    Cup,
     MusicBox,
     Mirror,
     TeaCup,
-    PocketWatch
+    OldPocketWatch,
+    BobbleHead
 }
