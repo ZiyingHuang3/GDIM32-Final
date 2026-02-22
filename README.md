@@ -13,8 +13,8 @@ Put your individual check-in Devlog here.
 Put your group Devlog here.
 
 
-### Team Member Name 1
-Put your individual final Devlog here.
+### Evelina Wang
+The item draft was completed on 2.21. This enables the items to be picked up and detected by NPCs.
 ### Team Member Name 2
 Put your individual final Devlog here.
 ### Team Member Name 3
