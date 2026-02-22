@@ -317,7 +317,8 @@ GameObject:
   - component: {fileID: 506648610}
   - component: {fileID: 506648609}
   - component: {fileID: 506648608}
-  - component: {fileID: 506648611}
+  - component: {fileID: 506648612}
+  - component: {fileID: 506648613}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -373,15 +374,29 @@ Transform:
   m_GameObject: {fileID: 506648607}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.4765105, y: 0.67565155, z: -8.7097845}
+  m_LocalPosition: {x: -4.54, y: 0.67565155, z: -8.7097845}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 963194228}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &506648611
-CapsuleCollider:
+--- !u!114 &506648612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 506648607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06fb0cd35c9f8884a92a37d6d75fcf5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _forwardSpeed: 5
+  _turnSpeed: 180
+--- !u!65 &506648613
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -398,11 +413,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 1
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  serializedVersion: 3
+  m_Size: {x: 0.82014036, y: 0.8500753, z: 0.6989651}
+  m_Center: {x: -1.1089213, y: -0.13638058, z: -0.5885458}
 --- !u!1001 &571520083
 PrefabInstance:
   m_ObjectHideFlags: 0
