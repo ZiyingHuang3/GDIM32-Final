@@ -17,10 +17,10 @@ public class NPC : MonoBehaviour
         if (!other.CompareTag("Player")) return;
         if (Time.time - lastDamageTime < damageCooldown) return;
         lastDamageTime = Time.time;
-        PlayerHealth health = other.GetComponent<PlayerHealth>();
-        if (health != null)
+       PlayerController player = other.GetComponent<PlayerController>();
+        if (player != null)
         {
-            health.TakeDamage(damage);
+            player.TakeDamage(damage);
         }
     }
 }
