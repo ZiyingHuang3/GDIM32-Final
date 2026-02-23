@@ -27,7 +27,7 @@ public class Player : MonoBehaviour
         Quaternion turnRotation = Quaternion.Euler(0, turn, 0);
         _playerRigidbody.MoveRotation(_playerRigidbody.rotation * turnRotation);    
 
-        //cannot move until start button is pressed
+ 
     }
 
 
