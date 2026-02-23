@@ -14,7 +14,7 @@ Put your group Devlog here.
 
 
 ### Evelina Wang
-The item draft was completed on 2.21. This enables the items to be picked up and detected by NPCs.
+The item draft was completed on 2.21. This enables the items to be picked up and detected by NPCs. Scary NPC script and player health finished on 2.22
 ### Team Member Name 2
 Put your individual final Devlog here.
 ### Team Member Name 3
