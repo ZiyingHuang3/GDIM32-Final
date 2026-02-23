@@ -788,7 +788,7 @@ MonoBehaviour:
   gameOverPanel: {fileID: 673982965}
   startButton: {fileID: 88513448}
   restartButton: {fileID: 419310277}
-  startSeconds: 5
+  startSeconds: 90
   hp: 5
 --- !u!114 &519339526
 MonoBehaviour:
