@@ -3,9 +3,31 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
-{
+{   [Header("Health")]
+    [SerializeField] private int maxHealth = 5;
+    public int CurrentHealth { get; private set; }
+    private void Awake() 
+    {
+        CurrentHealth = maxHealth;
+    }
     public Inventory Inventory { get; private set; } = new Inventory();
     private IInteractable currentInteractable;
+    public void TakeDamage(int amount)
+    {
+        if (CurrentHealth <= 0) return;
+
+        CurrentHealth -= amount;
+
+        if (CurrentHealth < 0)
+            CurrentHealth = 0;
+
+        Debug.Log("Player Health: " + CurrentHealth);
+
+        if (CurrentHealth == 0)
+        {
+            Debug.Log("Player Died");
+        }
+    }
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.F) && currentInteractable != null)
