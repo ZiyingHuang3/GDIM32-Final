@@ -953,6 +953,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 5
+  ui: {fileID: 0}
 --- !u!136 &522665949
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1358,7 +1359,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &625435700
@@ -1907,6 +1908,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.1425534, y: 2.4476814, z: 1}
   m_Center: {x: 0.22837092, y: 0.7238406, z: -0.0000000019355908}
+--- !u!114 &873172297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 873172292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c59aae40215194c8faa05986ceda518d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1
+  damageCooldown: 1
 --- !u!1 &958158370 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -6020602008559880428, guid: 731b215542a700f4c9d8f07b326b6687, type: 3}
@@ -2732,6 +2747,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0c80021b98fdee846b68e5b4992439c3, type: 3}
       insertIndex: -1
       addedObject: {fileID: 873172295}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0c80021b98fdee846b68e5b4992439c3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 873172297}
   m_SourcePrefab: {fileID: 100100000, guid: 0c80021b98fdee846b68e5b4992439c3, type: 3}
 --- !u!1 &1796084150 stripped
 GameObject:

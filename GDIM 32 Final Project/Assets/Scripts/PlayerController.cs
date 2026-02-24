@@ -5,10 +5,14 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {   [Header("Health")]
     [SerializeField] private int maxHealth = 5;
+    [SerializeField] private UIManager ui;
     public int CurrentHealth { get; private set; }
     private void Awake() 
     {
         CurrentHealth = maxHealth;
+
+        if (ui == null)
+            ui = FindObjectOfType<UIManager>();
     }
     public Inventory Inventory { get; private set; } = new Inventory();
     private IInteractable currentInteractable;
@@ -21,11 +25,13 @@ public class PlayerController : MonoBehaviour
         if (CurrentHealth < 0)
             CurrentHealth = 0;
 
+        ui.SetHealth(CurrentHealth);
         Debug.Log("Player Health: " + CurrentHealth);
 
         if (CurrentHealth == 0)
         {
             Debug.Log("Player Died");
+            ui.ShowGameOver();
         }
     }
     private void Update()
