@@ -995,7 +995,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerRigidbody: {fileID: 522665946}
   _turnSpeed: 180
-  _moveSpeed: 5
+  _moveSpeed: 3
 --- !u!114 &522665948
 MonoBehaviour:
   m_ObjectHideFlags: 0
