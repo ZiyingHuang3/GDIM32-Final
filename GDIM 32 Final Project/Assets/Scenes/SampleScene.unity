@@ -445,7 +445,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 4
-  interactDistance: 0.5
+  interactDistance: 0.8
   pickupSfx: {fileID: 0}
 --- !u!65 &101114373
 BoxCollider:
@@ -1197,7 +1197,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 1
-  interactDistance: 0.5
+  interactDistance: 0.8
   pickupSfx: {fileID: 0}
 --- !u!65 &571520086
 BoxCollider:
@@ -1736,7 +1736,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 5
-  interactDistance: 0.5
+  interactDistance: 0.8
   pickupSfx: {fileID: 0}
 --- !u!65 &797966737
 BoxCollider:
@@ -2393,7 +2393,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 0
-  interactDistance: 0.5
+  interactDistance: 0.8
   pickupSfx: {fileID: 0}
 --- !u!65 &1323379171
 BoxCollider:
@@ -2768,7 +2768,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 2
-  interactDistance: 0.5
+  interactDistance: 0.8
   pickupSfx: {fileID: 0}
 --- !u!65 &1769253556
 BoxCollider:
