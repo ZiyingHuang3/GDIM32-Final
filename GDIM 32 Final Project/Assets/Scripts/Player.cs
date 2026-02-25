@@ -47,12 +47,12 @@ public class Player : MonoBehaviour
 
 
         //interact
-        /*
+        
          if (Input.GetMouseButtonDown(0))
         {
             TryClickInteract();
         }
-        */
+        
     }
     private void FixedUpdate()
     {
@@ -67,8 +67,6 @@ public class Player : MonoBehaviour
         Quaternion turnRotation = Quaternion.Euler(0, turn, 0);
         _playerRigidbody.MoveRotation(_playerRigidbody.rotation * turnRotation);
     }
-
-    
     private void TryClickInteract()
     {
         if (playerCamera == null) return;
