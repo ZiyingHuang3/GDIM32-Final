@@ -11,8 +11,11 @@ public class Player : MonoBehaviour
 
     private float vertical;
     private float horizontal;
+    private bool _canMove = false;
     void Update()
     {
+        CanMove();
+
         vertical = Input.GetAxis("Vertical");
         horizontal = Input.GetAxis("Horizontal");
     }
@@ -28,5 +31,15 @@ public class Player : MonoBehaviour
         _playerRigidbody.MoveRotation(_playerRigidbody.rotation * turnRotation);    
     }
 
+    private void CanMove()
+    {
+        _canMove = true; 
+        if (_canMove == false)
+        {
+            vertical = 0f;
+            horizontal = 0f;
+            return;
+        }
+    }
 
 }
