@@ -684,8 +684,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c59aae40215194c8faa05986ceda518d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  alertRange: 3
+  player: {fileID: 522665952}
   damage: 1
   damageCooldown: 1
+  animator: {fileID: 1613240743}
 --- !u!1 &419310275
 GameObject:
   m_ObjectHideFlags: 0
@@ -945,7 +948,6 @@ GameObject:
   - component: {fileID: 522665951}
   - component: {fileID: 522665950}
   - component: {fileID: 522665949}
-  - component: {fileID: 522665948}
   - component: {fileID: 522665947}
   - component: {fileID: 522665946}
   m_Layer: 0
@@ -994,25 +996,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06fb0cd35c9f8884a92a37d6d75fcf5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 5
+  ui: {fileID: 519339525}
   _playerRigidbody: {fileID: 522665946}
   _turnSpeed: 180
   _moveSpeed: 3
---- !u!114 &522665948
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 522665945}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b02a0b4a835b64574871c2380d286757, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 5
-  ui: {fileID: 0}
-  playerCamera: {fileID: 0}
-  interactDistance: 1
+  playerCamera: {fileID: 963194227}
+  interactDistance: 3
   interactLayers:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -1980,8 +1970,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c59aae40215194c8faa05986ceda518d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  alertRange: 3
+  player: {fileID: 0}
   damage: 1
   damageCooldown: 1
+  animator: {fileID: 0}
 --- !u!114 &873172301
 MonoBehaviour:
   m_ObjectHideFlags: 0
