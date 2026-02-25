@@ -3,27 +3,56 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
-{   [Header("Health")]
+{
+    [Header("Health")]
     [SerializeField] private int maxHealth = 5;
     [SerializeField] private UIManager ui;
     public int CurrentHealth { get; private set; }
-    private void Awake() 
+
+    [Header("Interact")]
+    [SerializeField] private Camera playerCamera;
+    [SerializeField] private float interactDistance = 3f;
+    [SerializeField] private LayerMask interactLayers = ~0;
+
+    public Inventory Inventory { get; private set; } = new Inventory();
+
+    private void Awake()
     {
         CurrentHealth = maxHealth;
 
-        if (ui == null)
-            ui = FindObjectOfType<UIManager>();
+        if (ui == null) ui = FindObjectOfType<UIManager>();
+        if (playerCamera == null) playerCamera = Camera.main;
     }
-    public Inventory Inventory { get; private set; } = new Inventory();
-    private IInteractable currentInteractable;
+
+    private void Update()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            TryClickInteract();
+        }
+    }
+
+    private void TryClickInteract()
+    {
+        if (playerCamera == null) return;
+
+        Ray ray = playerCamera.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(ray, out RaycastHit hit, interactDistance, interactLayers, QueryTriggerInteraction.Ignore))
+        {
+            var interactable = hit.collider.GetComponentInParent<IInteractable>();
+            if (interactable != null)
+            {
+                interactable.Interact(this);
+            }
+        }
+    }
+
     public void TakeDamage(int amount)
     {
         if (CurrentHealth <= 0) return;
 
         CurrentHealth -= amount;
-
-        if (CurrentHealth < 0)
-            CurrentHealth = 0;
+        if (CurrentHealth < 0) CurrentHealth = 0;
 
         ui.SetHealth(CurrentHealth);
         Debug.Log("Player Health: " + CurrentHealth);
@@ -32,28 +61,6 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("Player Died");
             ui.ShowGameOver();
-        }
-    }
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.F) && currentInteractable != null)
-        {
-            currentInteractable.Interact(this);
-        }
-    }
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.TryGetComponent<IInteractable>(out var interactable))
-        {
-            currentInteractable = interactable;
-        }
-    }
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.TryGetComponent<IInteractable>(out var interactable))
-        {
-            if (currentInteractable == interactable)
-                currentInteractable = null;
         }
     }
 }
