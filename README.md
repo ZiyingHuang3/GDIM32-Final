@@ -1,6 +1,6 @@
 # GDIM32-Final
 ## Check-In
-### Team Member Name 1
+### Team Member Name Evelina
 Put your individual check-in Devlog here.
 ### Team Member Name 2
 Put your individual check-in Devlog here.
