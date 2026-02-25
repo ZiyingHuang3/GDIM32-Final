@@ -17,7 +17,7 @@ public class NPC : MonoBehaviour
         if (!other.CompareTag("Player")) return;
         if (Time.time - lastDamageTime < damageCooldown) return;
         lastDamageTime = Time.time;
-       PlayerController player = other.GetComponent<PlayerController>();
+       Player player = other.GetComponent<Player>();
         if (player != null)
         {
             player.TakeDamage(damage);

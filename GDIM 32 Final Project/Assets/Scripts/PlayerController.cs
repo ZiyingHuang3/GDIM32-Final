@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+/*public class PlayerController : MonoBehaviour
 {
     [Header("Health")]
     [SerializeField] private int maxHealth = 5;
@@ -64,3 +64,5 @@ public class PlayerController : MonoBehaviour
         }
     }
 }
+
+*/

@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     [SerializeField] private int maxHealth = 5;
     [SerializeField] private UIManager ui;
     public int CurrentHealth { get; private set; }
+    
 
     [Header("Movement")]
     [SerializeField] private Rigidbody _playerRigidbody;
@@ -17,6 +18,8 @@ public class Player : MonoBehaviour
     private float vertical;
     private float horizontal;
     private bool _canMove = true;
+    
+    
 
     [Header("Interact")]
     [SerializeField] private Camera playerCamera;
@@ -33,6 +36,7 @@ public class Player : MonoBehaviour
         if (playerCamera == null) playerCamera = Camera.main;
     }
 
+    
     void Update()
     {
         //movement
@@ -43,10 +47,12 @@ public class Player : MonoBehaviour
 
 
         //interact
-        if (Input.GetMouseButtonDown(0))
+        /*
+         if (Input.GetMouseButtonDown(0))
         {
             TryClickInteract();
         }
+        */
     }
     private void FixedUpdate()
     {
@@ -62,6 +68,7 @@ public class Player : MonoBehaviour
         _playerRigidbody.MoveRotation(_playerRigidbody.rotation * turnRotation);
     }
 
+    
     private void TryClickInteract()
     {
         if (playerCamera == null) return;
@@ -101,5 +108,6 @@ public class Player : MonoBehaviour
         ui.ShowGameOver();
         Debug.Log("Player Died");
     }
+    
 
 }

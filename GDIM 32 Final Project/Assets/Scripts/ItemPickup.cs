@@ -16,7 +16,7 @@ public class ItemPickup : MonoBehaviour
 
     private void OnMouseDown()
     {
-        var player = FindObjectOfType<PlayerController>();
+        var player = FindObjectOfType<Player>();
         if (player == null) return;
 
         float distance = Vector3.Distance(
