@@ -13,6 +13,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Button startButton;
     [SerializeField] private Button restartButton;
     [SerializeField] private float startSeconds = 300f;
+    [SerializeField] private PlayerController player;
     public int hp = 3;
     private float timeLeft;
     private bool timerRunning;
@@ -26,6 +27,7 @@ public class UIManager : MonoBehaviour
 
         timeLeft = startSeconds;
         UpdateTimerText();
+
     }
 
     private void Update()
