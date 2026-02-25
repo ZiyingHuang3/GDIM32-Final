@@ -26,8 +26,6 @@ public class Player : MonoBehaviour
         float turn = horizontal * _turnSpeed * Time.fixedDeltaTime;
         Quaternion turnRotation = Quaternion.Euler(0, turn, 0);
         _playerRigidbody.MoveRotation(_playerRigidbody.rotation * turnRotation);    
-
- 
     }
 
 
