@@ -845,6 +845,7 @@ MonoBehaviour:
   startButton: {fileID: 88513448}
   restartButton: {fileID: 419310277}
   startSeconds: 300
+  player: {fileID: 0}
   hp: 5
 --- !u!114 &519339526
 MonoBehaviour:
