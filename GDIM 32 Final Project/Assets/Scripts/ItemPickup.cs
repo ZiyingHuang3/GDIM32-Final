@@ -1,40 +1,43 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 [RequireComponent(typeof(Collider))]
-public class ItemPickup3D : MonoBehaviour, IInteractable
+public class ItemPickup : MonoBehaviour
 {
     [Header("Item Data")]
     [SerializeField] private ItemId itemId = ItemId.Mirror;
 
+    [Header("Pickup Settings")]
+    [SerializeField] private float interactDistance = 3f; 
+
     [Header("Optional Feedback")]
     [SerializeField] private AudioClip pickupSfx;
-    [SerializeField] private AudioClip specialSfx;      
-    [SerializeField] private bool playSpecialOnPickup = true;
-public string GetHint()
+
+    private void OnMouseDown()
     {
-        return $"Press F to pick up {itemId}";
-    }
-public void Interact(PlayerController player)
-    {
+        var player = FindObjectOfType<PlayerController>();
         if (player == null) return;
-        player.Inventory.Add(itemId);
-        switch (itemId)
+
+        float distance = Vector3.Distance(
+            player.transform.position,
+            transform.position
+        );
+
+        if (distance > interactDistance)
         {
-            case ItemId.MusicBox:
-                if (playSpecialOnPickup) PlayClip(specialSfx);
-                break;
+            Debug.Log("Too far to pick up");
+            return;
         }
+
+        player.Inventory.Add(itemId);
+        PlayClip(pickupSfx);
         gameObject.SetActive(false);
     }
+
     private void PlayClip(AudioClip clip)
     {
         if (clip == null) return;
         AudioSource.PlayClipAtPoint(clip, transform.position);
-    }
-    private void Reset()
-    {
-        var col = GetComponent<Collider>();
-        col.isTrigger = true;
     }
 }
