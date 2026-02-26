@@ -13,7 +13,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Button startButton;
     [SerializeField] private Button restartButton;
     [SerializeField] private float startSeconds = 300f;
-    [SerializeField] private PlayerController player;
+    [SerializeField] private Player player;
+
     public int hp = 3;
     private float timeLeft;
     private bool timerRunning;

@@ -634,21 +634,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: -6853923613730199073, guid: 49c5d69a919bd604dab3373ff966b365, type: 3}
   m_PrefabInstance: {fileID: 2048190443}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &409008163
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 409008160}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8613ee4be5a6132449c2f3bf05df8d3e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  alertRange: 1.75
-  player: {fileID: 522665952}
-  animator: {fileID: 1613240743}
 --- !u!136 &409008166
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -684,8 +669,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c59aae40215194c8faa05986ceda518d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  alertRange: 3
+  player: {fileID: 522665952}
   damage: 1
   damageCooldown: 1
+  animator: {fileID: 1613240743}
 --- !u!1 &419310275
 GameObject:
   m_ObjectHideFlags: 0
@@ -845,6 +833,7 @@ MonoBehaviour:
   startButton: {fileID: 88513448}
   restartButton: {fileID: 419310277}
   startSeconds: 300
+  player: {fileID: 0}
   hp: 5
 --- !u!114 &519339526
 MonoBehaviour:
@@ -944,7 +933,6 @@ GameObject:
   - component: {fileID: 522665951}
   - component: {fileID: 522665950}
   - component: {fileID: 522665949}
-  - component: {fileID: 522665948}
   - component: {fileID: 522665947}
   - component: {fileID: 522665946}
   m_Layer: 0
@@ -993,25 +981,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06fb0cd35c9f8884a92a37d6d75fcf5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 5
+  ui: {fileID: 519339525}
   _playerRigidbody: {fileID: 522665946}
   _turnSpeed: 180
   _moveSpeed: 3
---- !u!114 &522665948
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 522665945}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b02a0b4a835b64574871c2380d286757, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 5
-  ui: {fileID: 0}
-  playerCamera: {fileID: 0}
-  interactDistance: 1
+  playerCamera: {fileID: 963194227}
+  interactDistance: 3
   interactLayers:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -1979,22 +1955,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c59aae40215194c8faa05986ceda518d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  alertRange: 3
+  player: {fileID: 522665952}
   damage: 1
   damageCooldown: 1
---- !u!114 &873172301
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 873172292}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8613ee4be5a6132449c2f3bf05df8d3e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  alertRange: 2
-  player: {fileID: 522665952}
   animator: {fileID: 873172293}
 --- !u!65 &873172302
 BoxCollider:
@@ -5743,9 +5707,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0c80021b98fdee846b68e5b4992439c3, type: 3}
       insertIndex: -1
       addedObject: {fileID: 873172297}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0c80021b98fdee846b68e5b4992439c3, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 873172301}
   m_SourcePrefab: {fileID: 100100000, guid: 0c80021b98fdee846b68e5b4992439c3, type: 3}
 --- !u!1 &1971040832
 GameObject:
@@ -6023,9 +5984,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 49c5d69a919bd604dab3373ff966b365, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1613240745}
-    - targetCorrespondingSourceObject: {fileID: -6853923613730199073, guid: 49c5d69a919bd604dab3373ff966b365, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 409008163}
     - targetCorrespondingSourceObject: {fileID: -6853923613730199073, guid: 49c5d69a919bd604dab3373ff966b365, type: 3}
       insertIndex: -1
       addedObject: {fileID: 409008166}

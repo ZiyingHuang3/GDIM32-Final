@@ -5,5 +5,5 @@ using UnityEngine;
 public interface IInteractable 
 {
     string GetHint();
-    void Interact(PlayerController player);
+    void Interact(Player player);
 }
