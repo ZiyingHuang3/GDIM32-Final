@@ -9,6 +9,7 @@ public class UIManager : MonoBehaviour
 {
     [SerializeField] private TMP_Text healthText;
     [SerializeField] private TMP_Text timerText;
+    [SerializeField] private GameObject startPanel;
     [SerializeField] private GameObject gameOverPanel;
     [SerializeField] private Button startButton;
     [SerializeField] private Button restartButton;
@@ -18,16 +19,27 @@ public class UIManager : MonoBehaviour
     public int hp = 3;
     private float timeLeft;
     private bool timerRunning;
+    private bool gameStarted;
     private void Start()
     {
+        if (startPanel != null) startPanel.SetActive(true);
+
         gameOverPanel.SetActive(false);
+
         SetHealth(hp);
+
+        timeLeft = startSeconds;
+
+        UpdateTimerText();
+
+        timerRunning = false;
+
+        gameStarted = false;
+
+        if (player != null) player.enabled = false;
 
         startButton.onClick.AddListener(StartGame);
         restartButton.onClick.AddListener(RestartGame);
-
-        timeLeft = startSeconds;
-        UpdateTimerText();
 
     }
 
@@ -60,14 +72,16 @@ public class UIManager : MonoBehaviour
         gameOverPanel.SetActive(true);
     }
 
-    private void StartGame()
+    public void StartGame()
     {
+        gameStarted = true;
         timerRunning = true;
-        startButton.gameObject.SetActive(false);
-        gameOverPanel.SetActive(false);
-
+        if (startPanel != null) startPanel.SetActive(false);
         timeLeft = startSeconds;
         UpdateTimerText();
+        gameOverPanel.SetActive(false);
+        if (player != null) player.enabled = true;
+
     }
 
     private void RestartGame()
