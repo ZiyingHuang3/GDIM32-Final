@@ -15,11 +15,12 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Button restartButton;
     [SerializeField] private float startSeconds = 300f;
     [SerializeField] private Player player;
+    
 
     public int hp = 3;
     private float timeLeft;
     private bool timerRunning;
-    private bool gameStarted;
+  
     private void Start()
     {
         if (startPanel != null) startPanel.SetActive(true);
@@ -34,7 +35,6 @@ public class UIManager : MonoBehaviour
 
         timerRunning = false;
 
-        gameStarted = false;
 
         if (player != null) player.enabled = false;
 
@@ -74,7 +74,7 @@ public class UIManager : MonoBehaviour
 
     public void StartGame()
     {
-        gameStarted = true;
+
         timerRunning = true;
         if (startPanel != null) startPanel.SetActive(false);
         timeLeft = startSeconds;
