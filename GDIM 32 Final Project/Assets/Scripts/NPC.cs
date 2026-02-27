@@ -8,7 +8,9 @@ public class NPC : MonoBehaviour
     public enum State { Idle, Attack }
 
     [Header("Detection")]
+    [SerializeField] private Transform alertOrigin;
     [SerializeField] private float alertRange = 3f;
+    [SerializeField, Range(0f, 180f)] private float viewAngle = 90f;
     [SerializeField] private Transform player;
 
     [Header("Combat")]
@@ -28,8 +30,13 @@ public class NPC : MonoBehaviour
 
     private void OnDrawGizmos()
     {
+        Vector3 origin = alertOrigin ? alertOrigin.position : transform.position;
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, alertRange);
+        Gizmos.DrawWireSphere(origin, alertRange);
+        Vector3 leftDir = Quaternion.Euler(0, -viewAngle * 0.5f, 0) * transform.forward;
+        Vector3 rightDir = Quaternion.Euler(0, viewAngle * 0.5f, 0) * transform.forward;
+        Gizmos.DrawRay(origin, leftDir * alertRange);
+        Gizmos.DrawRay(origin, rightDir * alertRange);
     }
     private void Awake()
     {
@@ -46,11 +53,22 @@ public class NPC : MonoBehaviour
     private void Update()
     {
         if (player == null) return;
-        float d = Vector3.Distance(transform.position, player.position);
+        Vector3 origin = alertOrigin ? alertOrigin.position : transform.position;
+        Vector3 toPlayer = player.position - origin;
+        float dist = toPlayer.magnitude;
 
-        if (d <= alertRange && state != State.Attack)
+        bool inRange = dist <= alertRange;
+
+        bool inFOV = false;
+        if (inRange && dist > 0.001f)
+        {
+            float angle = Vector3.Angle(transform.forward, toPlayer);
+            inFOV = angle <= viewAngle * 0.5f;
+        }
+
+        if (inRange && inFOV && state != State.Attack)
             SetState(State.Attack);
-        else if (d > alertRange && state != State.Idle)
+        else if ((!inRange || !inFOV) && state != State.Idle)
             SetState(State.Idle);
     }
     private void OnTriggerStay(Collider other)
