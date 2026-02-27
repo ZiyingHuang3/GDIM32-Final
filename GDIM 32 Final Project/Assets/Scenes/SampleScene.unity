@@ -458,7 +458,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 4
   interactDistance: 0.8
-  inspectDistanceFromCamera: 0.8
+  inspectDistanceFromCamera: 1
   inspectScaleMultiplier: 1
   rotateSpeed: 180
   confirmKey: 101
@@ -1484,7 +1484,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 1
   interactDistance: 0.8
-  inspectDistanceFromCamera: 0.8
+  inspectDistanceFromCamera: 1
   inspectScaleMultiplier: 1
   rotateSpeed: 180
   confirmKey: 101
@@ -2028,7 +2028,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 5
   interactDistance: 0.8
-  inspectDistanceFromCamera: 0.8
+  inspectDistanceFromCamera: 1
   inspectScaleMultiplier: 1
   rotateSpeed: 180
   confirmKey: 101
@@ -3180,7 +3180,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 2
   interactDistance: 1
-  inspectDistanceFromCamera: 0.6
+  inspectDistanceFromCamera: 1
   inspectScaleMultiplier: 1
   rotateSpeed: 180
   confirmKey: 101
