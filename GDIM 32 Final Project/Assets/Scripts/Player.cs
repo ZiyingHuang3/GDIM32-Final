@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public static Player Instance { get; private set; }
+    public static Player Instance2 { get; private set; }
+
     [Header("Health")]
     [SerializeField] private int maxHealth = 5;
     [SerializeField] private UIManager ui;
@@ -30,13 +33,22 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
+        //singleton
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this);
+            return;
+        }
+
+        Instance = this;
+
+        //
         CurrentHealth = maxHealth;
 
         if (ui == null) ui = FindObjectOfType<UIManager>();
         if (playerCamera == null) playerCamera = Camera.main;
     }
 
-    
     void Update()
     {
         //movement

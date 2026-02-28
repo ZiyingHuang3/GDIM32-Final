@@ -6,6 +6,11 @@ public class Inventory
 {
     private readonly List<ItemId> items = new List<ItemId>();
 
+    public Inventory()
+    {
+        GameEvents.OnItemPickedUp += Add;
+        GameEvents.OnItemRemoved += Remove;
+    }
 public void Add(ItemId id)
     {
         items.Add(id);
