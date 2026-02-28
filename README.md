@@ -14,7 +14,7 @@ Put your group Devlog here.
 
 
 ### Evelina Wang
-The item draft was completed on 2.21. This enables the items to be picked up and detected by NPCs. Scary NPC script and player health finished on 2.22. Change interact from click F to click the mouse
+The item draft was completed on 2.21. This enables the items to be picked up and detected by NPCs. Scary NPC script and player health finished on 2.22. Change interact from click F to click the mouse. 2.27, Added a visual inspection mode for picking up items.I also wrote the script and dialogue for the mission NPC, enabling it to have conversations and make choices. I also asked Zoe to do the beautification work.
 ### Team Member Name 2
 Put your individual final Devlog here.
 ### Team Member Name 3
