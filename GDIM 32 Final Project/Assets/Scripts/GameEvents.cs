@@ -1,18 +1,18 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameEvents : MonoBehaviour
+public static class GameEvents 
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    //player
+    public static Action<int> OnHealthChanged;
+    public static Action OnPlayerDied;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    //Game
+    public static Action OnGameStarted;
+
+    //inventory
+    public static Action<ItemId> OnItemPickedUp;
+    public static Action<ItemId> OnItemRemoved;
 }

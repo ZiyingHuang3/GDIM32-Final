@@ -6,7 +6,7 @@ using UnityEngine;
 public class ItemPickup : MonoBehaviour
 {
     [Header("Item Data")]
-    [SerializeField] private ItemId itemId = ItemId.Mirror;
+    [SerializeField] private ItemId itemId; //  = ItemId.Mirror;
     [Header("Pickup Settings")]
     [SerializeField] private float interactDistance = 3f;
     [Header("Inspect View")]
@@ -18,7 +18,7 @@ public class ItemPickup : MonoBehaviour
     [SerializeField] private AudioClip inspectSfx; 
     [SerializeField] private AudioClip pickupSfx; 
 
-    private Player player;
+    //private Player player;
     private Camera cam;
     private Collider col;
     private bool isInspecting;
@@ -92,7 +92,8 @@ public class ItemPickup : MonoBehaviour
     }
     private void ConfirmPickup()
     {
-        player.Inventory.Add(itemId);
+        //player.Inventory.Add(itemId);
+        GameEvents.OnItemPickedUp?.Invoke(itemId);
         PlayClip(pickupSfx);
         gameObject.SetActive(false);
     }

@@ -14,13 +14,24 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Button startButton;
     [SerializeField] private Button restartButton;
     [SerializeField] private float startSeconds = 300f;
-    [SerializeField] private Player player;
+    //[SerializeField] private Player player;
     
 
     public int hp = 3;
     private float timeLeft;
     private bool timerRunning;
   
+    private void OnEnable()
+    {
+        GameEvents.OnHealthChanged += SetHealth;
+        GameEvents.OnPlayerDied += ShowGameOver;
+    }
+
+    private void OnDisable()
+    {
+        GameEvents.OnHealthChanged -= SetHealth;
+        GameEvents.OnPlayerDied -= ShowGameOver;
+    }
     private void Start()
     {
         if (startPanel != null) startPanel.SetActive(true);
@@ -36,7 +47,7 @@ public class UIManager : MonoBehaviour
         timerRunning = false;
 
 
-        if (player != null) player.enabled = false;
+        //if (player != null) player.enabled = false;
 
         startButton.onClick.AddListener(StartGame);
         restartButton.onClick.AddListener(RestartGame);
@@ -74,13 +85,14 @@ public class UIManager : MonoBehaviour
 
     public void StartGame()
     {
+        GameEvents.OnGameStarted?.Invoke();
 
         timerRunning = true;
         if (startPanel != null) startPanel.SetActive(false);
         timeLeft = startSeconds;
         UpdateTimerText();
         gameOverPanel.SetActive(false);
-        if (player != null) player.enabled = true;
+       // if (player != null) player.enabled = true;
 
     }
 

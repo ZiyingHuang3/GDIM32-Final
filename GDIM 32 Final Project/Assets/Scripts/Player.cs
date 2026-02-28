@@ -5,11 +5,10 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public static Player Instance { get; private set; }
-    public static Player Instance2 { get; private set; }
 
     [Header("Health")]
     [SerializeField] private int maxHealth = 5;
-    [SerializeField] private UIManager ui;
+    //[SerializeField] private UIManager ui;
     public int CurrentHealth { get; private set; }
     
 
@@ -20,9 +19,8 @@ public class Player : MonoBehaviour
 
     private float vertical;
     private float horizontal;
-    private bool _canMove = true;
-    
-    
+    private bool _canMove = false;
+    //private bool _canMove = true;
 
     [Header("Interact")]
     [SerializeField] private Camera playerCamera;
@@ -45,10 +43,24 @@ public class Player : MonoBehaviour
         //
         CurrentHealth = maxHealth;
 
-        if (ui == null) ui = FindObjectOfType<UIManager>();
+        //if (ui == null) ui = FindObjectOfType<UIManager>();
         if (playerCamera == null) playerCamera = Camera.main;
     }
 
+    private void OnEnable()
+    {
+        GameEvents.OnGameStarted += EnableMovement;
+    }
+
+    private void OnDisable()
+    {
+        GameEvents.OnGameStarted -= EnableMovement;
+    }
+
+    private void EnableMovement()
+    {
+        _canMove = true;
+    }
     void Update()
     {
         //movement
@@ -100,7 +112,8 @@ public class Player : MonoBehaviour
         CurrentHealth -= amount;
         if (CurrentHealth < 0) CurrentHealth = 0;
 
-        ui.SetHealth(CurrentHealth);
+       // ui.SetHealth(CurrentHealth);
+        GameEvents.OnHealthChanged?.Invoke(CurrentHealth);
         Debug.Log("Player Health: " + CurrentHealth);
 
         if (CurrentHealth == 0)
@@ -115,7 +128,8 @@ public class Player : MonoBehaviour
         vertical = 0f;
         horizontal = 0f;
 
-        ui.ShowGameOver();
+        //ui.ShowGameOver();
+        GameEvents.OnPlayerDied?.Invoke();
         Debug.Log("Player Died");
     }
     
