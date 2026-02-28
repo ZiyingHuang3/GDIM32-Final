@@ -10,5 +10,6 @@ public enum ItemId
     Mirror,
     TeaCup,
     OldPocketWatch,
-    BobbleHead
+    BobbleHead,
+    Key
 }

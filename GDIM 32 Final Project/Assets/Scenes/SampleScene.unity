@@ -1721,6 +1721,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 625435697}
   m_CullTransparentMesh: 1
+--- !u!1 &639570565
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 639570567}
+  - component: {fileID: 639570566}
+  m_Layer: 0
+  m_Name: QuestManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &639570566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 639570565}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d92cbbcb2636c40b88c417f06497bdd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &639570567
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 639570565}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -5.0586505, y: 0.44585878, z: -6.6990905}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &673982965
 GameObject:
   m_ObjectHideFlags: 0
@@ -2381,6 +2425,21 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.6428793, y: 0.75493586, z: 0.51981974}
   m_Center: {x: 0.01920068, y: 0.12253165, z: -0.037451357}
+--- !u!114 &960267563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 960267558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97c8b3ee0e53f44dbad285348b8f84e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  requiredItems: 0000000000000000000000000000000000000000
+  rewardItem: 6
+  consumeRequiredItems: 1
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -2884,6 +2943,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4b5c446ac30c2fe4586b4f7396e29093, type: 3}
       insertIndex: -1
       addedObject: {fileID: 960267561}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4b5c446ac30c2fe4586b4f7396e29093, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 960267563}
   m_SourcePrefab: {fileID: 100100000, guid: 4b5c446ac30c2fe4586b4f7396e29093, type: 3}
 --- !u!1 &1607513925
 GameObject:
@@ -6468,3 +6530,4 @@ SceneRoots:
   - {fileID: 2048190443}
   - {fileID: 228253789}
   - {fileID: 111975640}
+  - {fileID: 639570567}
