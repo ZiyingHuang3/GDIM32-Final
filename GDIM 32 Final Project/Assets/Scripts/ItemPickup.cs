@@ -36,13 +36,14 @@ public class ItemPickup : MonoBehaviour
 
     private void Start()
     {
-        player = FindObjectOfType<Player>();
+        //player = FindObjectOfType<Player>();
         cam = Camera.main;
     }
     private void OnMouseDown()
     {
         if (isInspecting) return;
-        if (player == null || cam == null) return;
+        if (cam == null) return;
+        //if (player == null || cam == null) return;
         Vector3 camPos = cam.transform.position;
         float distance = Vector3.Distance(camPos, col.ClosestPoint(camPos));
         if (distance > interactDistance)
