@@ -9,7 +9,7 @@ public static class GameEvents
     public static Action<int> OnHealthChanged;
     public static Action OnPlayerDied;
 
-    //Game
+    //UI
     public static Action OnGameStarted;
 
     //inventory
