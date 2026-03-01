@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.UIElements;
 
 public class KeyQuestNPC : MonoBehaviour, IInteractable
 {
@@ -13,6 +15,14 @@ public class KeyQuestNPC : MonoBehaviour, IInteractable
     [Header("Reward (choose in Inspector)")]
     [SerializeField] private ItemId rewardItem;
     [SerializeField] private bool consumeRequiredItems = true;
+
+    [Header("Talk UI")]
+    [SerializeField] private GameObject talkPrompt;
+    [SerializeField] private TMP_Text talkText;
+    [SerializeField] private string talkMsg = "Click to talk";
+
+    private Camera cam;
+    private bool playerRange;
 
     private bool introASeen;
     private bool introBSeen;
@@ -43,11 +53,41 @@ public class KeyQuestNPC : MonoBehaviour, IInteractable
     [TextArea] [SerializeField] private string giveKeyLine =
         "You have done well. Take the key. And find the way out.";
 
+    private void Start()
+    {
+        cam = Camera.main;
+
+        if (talkPrompt != null)
+            talkPrompt.SetActive(false);
+
+        if (talkText != null)
+            talkText.text = talkMsg;
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (!other.CompareTag("Player")) return;
+        playerRange = true;
+
+        if (talkPrompt != null && !questCompleted) 
+            talkPrompt.SetActive(true);
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (!other.CompareTag("Player")) return;
+        playerRange = false;
+
+        if (talkPrompt != null)
+            talkPrompt.SetActive(false);
+    }
     public string GetHint() => "Talk";
     public void Interact(Player player)
     {
+        
         if (player == null) return;
         currentPlayer = player;
+        if (talkPrompt != null)
+            talkPrompt.SetActive(false);
 
         if (dialogueUI == null) dialogueUI = FindObjectOfType<DialogueUI>();
 
