@@ -14,13 +14,15 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Button startButton;
     [SerializeField] private Button restartButton;
     [SerializeField] private float startSeconds = 300f;
+    [SerializeField] private TMP_Text promptText;
     //[SerializeField] private Player player;
-    
+
 
     public int hp = 3;
     private float timeLeft;
     private bool timerRunning;
-  
+
+
     private void OnEnable()
     {
         GameEvents.OnHealthChanged += SetHealth;
@@ -45,6 +47,8 @@ public class UIManager : MonoBehaviour
         UpdateTimerText();
 
         timerRunning = false;
+
+        promptText.gameObject.SetActive(false);
 
 
         //if (player != null) player.enabled = false;
@@ -71,7 +75,16 @@ public class UIManager : MonoBehaviour
 
         UpdateTimerText();
     }
+    public void ShowPrompt(string msg)
+    {
+        promptText.text = msg;
+        promptText.gameObject.SetActive(true);
+    }
 
+    public void HidePrompt()
+    {
+        promptText.gameObject.SetActive(false);
+    }
     public void SetHealth(int hp)
     {
         healthText.text = "HP: " + hp;

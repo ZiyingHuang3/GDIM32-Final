@@ -22,11 +22,13 @@ public class ItemPickup : MonoBehaviour
     private Camera cam;
     private Collider col;
     private bool isInspecting;
+    private bool playerRange;
     private Vector3 originalPos;
     private Quaternion originalRot;
     private Vector3 originalScale;
     private Transform originalParent;
     private Rigidbody rb;
+    private UIManager ui;
 
     private void Awake()
     {
@@ -38,9 +40,11 @@ public class ItemPickup : MonoBehaviour
     {
         //player = FindObjectOfType<Player>();
         cam = Camera.main;
+        ui = FindObjectOfType<UIManager>();
     }
     private void OnMouseDown()
     {
+        if (!playerRange) return;
         if (isInspecting) return;
         if (cam == null) return;
         //if (player == null || cam == null) return;
@@ -69,8 +73,25 @@ public class ItemPickup : MonoBehaviour
             ConfirmPickup();
         }
     }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (!other.CompareTag("Player")) return;
+
+        playerRange = true;
+        ui.ShowPrompt($"Click to pick up {itemId}");
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (!other.CompareTag("Player")) return;
+
+        playerRange = false;
+        ui.HidePrompt();
+    }
     private void EnterInspect()
     {
+        ui.ShowPrompt("Press E to put into bag");
+        playerRange = false;
         isInspecting = true;
         originalParent = transform.parent;
         originalPos = transform.position;
@@ -97,6 +118,7 @@ public class ItemPickup : MonoBehaviour
         GameEvents.OnItemPickedUp?.Invoke(itemId);
         PlayClip(pickupSfx);
         gameObject.SetActive(false);
+        ui.HidePrompt();
     }
 
     private void ExitInspect(bool restore)
