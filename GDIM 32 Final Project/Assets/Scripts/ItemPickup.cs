@@ -90,7 +90,7 @@ public class ItemPickup : MonoBehaviour
     }
     private void EnterInspect()
     {
-        ui.ShowPrompt("Press E to put into bag");
+        ui.ShowPrompt("Press E to put into bag / Right click to rotate");
         playerRange = false;
         isInspecting = true;
         originalParent = transform.parent;
