@@ -22,8 +22,6 @@ public class KeyQuestNPC : MonoBehaviour, IInteractable
     [SerializeField] private string talkMsg = "Click to talk";
 
     private Camera cam;
-    private bool playerRange;
-
     private bool introASeen;
     private bool introBSeen;
     private bool questStarted;
@@ -66,7 +64,6 @@ public class KeyQuestNPC : MonoBehaviour, IInteractable
     private void OnTriggerEnter(Collider other)
     {
         if (!other.CompareTag("Player")) return;
-        playerRange = true;
 
         if (talkPrompt != null && !questCompleted) 
             talkPrompt.SetActive(true);
@@ -75,7 +72,6 @@ public class KeyQuestNPC : MonoBehaviour, IInteractable
     private void OnTriggerExit(Collider other)
     {
         if (!other.CompareTag("Player")) return;
-        playerRange = false;
 
         if (talkPrompt != null)
             talkPrompt.SetActive(false);
@@ -138,6 +134,7 @@ public class KeyQuestNPC : MonoBehaviour, IInteractable
             introBSeen = true;
             dialogueUI.ShowOne(choiceBReply, "Back", ShowIntroMenu);
         }
+
     }
 
     private void ShowQuestCheck()
@@ -169,9 +166,15 @@ public class KeyQuestNPC : MonoBehaviour, IInteractable
 
         currentPlayer.Inventory.Add(rewardItem);
         questCompleted = true;
+        currentPlayer.Inventory.Add(rewardItem);
+
+        var keyVisual = currentPlayer.GetComponent<Player>();
+        if (keyVisual != null)
+         keyVisual.RefreshKeyInHand(currentPlayer.Inventory);
 
         dialogueUI.ShowOne(giveKeyLine, "OK", () => dialogueUI.Hide());
     }
+   
 }
 
 

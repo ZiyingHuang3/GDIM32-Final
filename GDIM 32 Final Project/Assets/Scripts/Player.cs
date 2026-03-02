@@ -16,7 +16,11 @@ public class Player : MonoBehaviour
     [SerializeField] private Rigidbody _playerRigidbody;
     [SerializeField] private float _turnSpeed = 1f;
     [SerializeField] private float _moveSpeed;
-
+    [Header("Hand Visual")]
+    [SerializeField] private Transform handSocket;        
+    [SerializeField] private ItemId keyItemId;   
+    [SerializeField] private GameObject keyPrefabInHand;
+    private GameObject keyInstance;
     private float vertical;
     private float horizontal;
     private bool _canMove = false;
@@ -133,5 +137,23 @@ public class Player : MonoBehaviour
         Debug.Log("Player Died");
     }
     
+   public void RefreshKeyInHand(Inventory inv)
+{
+    bool hasKey = inv != null && inv.Has(keyItemId);
+
+    if (hasKey && keyInstance == null)
+    {
+        keyInstance = Instantiate(keyPrefabInHand, handSocket);
+        keyInstance.SetActive(true); 
+
+        keyInstance.transform.localPosition = Vector3.zero;
+        keyInstance.transform.localRotation = Quaternion.identity;
+    }
+    else if (!hasKey && keyInstance != null)
+    {
+        Destroy(keyInstance);
+        keyInstance = null;
+    }
+}
 
 }
