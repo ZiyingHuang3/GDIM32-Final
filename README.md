@@ -59,4 +59,26 @@ Put your individual final Devlog here.
 Put your individual final Devlog here.
 
 ## Open-Source Assets
-Cite any open-source assets here. Put them in a LIST, and use correctly formatted LINKS.
+[Freddy 3D model](https://sketchfab.com/3d-models/freddy-a086d08b955e476ca41f8af04adceaa0)-NPC
+
+[Poppy 3D model](https://sketchfab.com/3d-models/poppy-playtime-chapter-5-huggy-huggy-9635231455214cff91e0cc70a5983ef2)-NPC
+
+[Gyroid 3D model](https://sketchfab.com/3d-models/animal-crossing-gyroid-dd02039f30e2424b8c9c79cfbec5bacc)-NPC
+
+[Oldpocketwatch 3D model](https://models.spriters-resource.com/playstation_vita/littlebigplanetpsvita/asset/466891/)-Item
+
+[Cup 3D model](https://models.spriters-resource.com/nintendo_switch/miitopia/asset/333602/)-Item
+
+[Mirror 3D model](https://models.spriters-resource.com/playstation_3/ratchetclankupyourarsenalhd/asset/312365/)-Item
+
+[Musicbox 3D model](https://models.spriters-resource.com/pc_computer/madeinabyssbinarystarfallingintodarkness/asset/344599/)-Item
+
+[Doll 3D model](https://models.spriters-resource.com/pc_computer/fivenightsatfreddysvrhelpwanted/asset/340641/)-Item
+
+[Key 3D model](https://models.spriters-resource.com/pc_computer/kanpeki/asset/334368/)-Item
+
+[Backroom 3D model](https://sketchfab.com/3d-models/original-backrooms-e5c6b30995ff442d9852a1dd697aaef1)-Environment
+
+[Font](https://www.dafont.com/vcr-osd-mono.font)-UI
+
+[BGM](https://www.youtube.com/watch?v=u1ENryv3WB4)-Background music
