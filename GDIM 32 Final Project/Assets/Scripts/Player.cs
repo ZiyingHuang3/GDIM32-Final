@@ -82,7 +82,14 @@ public class Player : MonoBehaviour
         {
             TryClickInteract();
         }
-        
+
+        //jump
+        if (Input.GetKeyDown(KeyCode.Space) && _isGrounded)
+        {
+            _playerRigidbody.AddForce(Vector3.up * _jump, ForceMode.Impulse);
+            _isGrounded = false;
+        }
+
     }
     private void FixedUpdate()
     {
@@ -96,13 +103,6 @@ public class Player : MonoBehaviour
         float turn = horizontal * _turnSpeed * Time.fixedDeltaTime;
         Quaternion turnRotation = Quaternion.Euler(0, turn, 0);
         _playerRigidbody.MoveRotation(_playerRigidbody.rotation * turnRotation);
-
-        //jump
-        if (Input.GetKeyDown(KeyCode.Space) && _isGrounded)
-        {
-            _playerRigidbody.AddForce(Vector3.up * _jump, ForceMode.Impulse);
-            _isGrounded = false;
-        }
     }
     private void TryClickInteract()
     {
@@ -164,5 +164,12 @@ public class Player : MonoBehaviour
         keyInstance = null;
     }
 }
-
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            _isGrounded = true;
+        }
+    }
 }
+

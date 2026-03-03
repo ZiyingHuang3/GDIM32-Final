@@ -1503,6 +1503,7 @@ MonoBehaviour:
   _playerRigidbody: {fileID: 522665946}
   _turnSpeed: 180
   _moveSpeed: 3
+  _jump: 4
   handSocket: {fileID: 2111128747}
   keyItemId: 6
   keyPrefabInHand: {fileID: 9087181613089811888, guid: 907a6b301479244838cab46268987f34, type: 3}
@@ -1593,7 +1594,7 @@ Transform:
   m_GameObject: {fileID: 522665945}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.2578, y: 0.595, z: -10.064}
+  m_LocalPosition: {x: -5.2578, y: 0.531, z: -10.064}
   m_LocalScale: {x: 0.64242, y: 0.58414, z: 0.66593}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3792,6 +3793,10 @@ PrefabInstance:
     - target: {fileID: 4195449330917118624, guid: d2b00f35f650b624ebf8db31ffde151c, type: 3}
       propertyPath: m_Name
       value: Chair1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4195449330917118624, guid: d2b00f35f650b624ebf8db31ffde151c, type: 3}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
