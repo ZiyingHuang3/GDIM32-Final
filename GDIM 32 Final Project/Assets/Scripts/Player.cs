@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
     [SerializeField] private Rigidbody _playerRigidbody;
     [SerializeField] private float _turnSpeed = 1f;
     [SerializeField] private float _moveSpeed;
+    [SerializeField] private float _jump;
     [Header("Hand Visual")]
     [SerializeField] private Transform handSocket;        
     [SerializeField] private ItemId keyItemId;   
@@ -25,6 +26,7 @@ public class Player : MonoBehaviour
     private float horizontal;
     private bool _canMove = false;
     //private bool _canMove = true;
+    private bool _isGrounded;
 
     [Header("Interact")]
     [SerializeField] private Camera playerCamera;
@@ -94,6 +96,13 @@ public class Player : MonoBehaviour
         float turn = horizontal * _turnSpeed * Time.fixedDeltaTime;
         Quaternion turnRotation = Quaternion.Euler(0, turn, 0);
         _playerRigidbody.MoveRotation(_playerRigidbody.rotation * turnRotation);
+
+        //jump
+        if (Input.GetKeyDown(KeyCode.Space) && _isGrounded)
+        {
+            _playerRigidbody.AddForce(Vector3.up * _jump, ForceMode.Impulse);
+            _isGrounded = false;
+        }
     }
     private void TryClickInteract()
     {
