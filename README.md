@@ -17,7 +17,9 @@ public static Action OnPlayerDied; so that the player script can invoke the even
 such as the UI can subscribe to the event and call its own method. In the UI script I added the following code to onEnable():  GameEvents.OnHealthChanged 
 += SetHealth; GameEvents.OnPlayerDied += ShowGameOver; The event for UI in GameEvents is public static Action OnGameStarted; and the event for 
 inventory is public static Action<ItemId> OnItemPickedUp; public static Action<ItemId> OnItemRemoved; These events are also so that the three scripts 
-didn't need a direct reference to each other. 
+didn't need a direct reference to each other. I also added some environment assets such as chairs, tables, clocks, and mirrors and rearranged the scene 
+so that interaction with NPC that damage the player is more meaningful. I added player jump movement so that players can reach items that are on tables or 
+higher then them. 
 
 I think our proposal and breakdwon was pretty helpful to start building our game. The proposal gave us the foundation in what we 
 needed to start building and coding. The breakdown also gave us the foundation to start coding scripts but it mostly only covered the basic concepts 
@@ -28,7 +30,7 @@ At this stage of the project, I worked primarily on the player interaction syste
 I also wrote the game state logic, including handling the Start and Restart flow. I added a countdown system using the variables timeLeft and timerRunning, which controls the game timer and triggers the game over state. I built several systems directly in Unity.
 I created a Canvas for NPC interaction prompts and set up collider components (BoxCollider and SphereCollider) to define interaction ranges. I created the NPC Animator controller and adjusted lighting for the atmosphere of the environment. I also applied post-processing color grading 
 to strengthen the mood of the scene and refined interactable UI placement.I also added AudioSource for bgm and sounds. In the process of building these systems, I resolved several interaction bugs. I fixed an issue where the player could move before pressing Start, as well as a bug where movement was still enabled after death. 
-I also corrected problems with UI prompts not hiding properly during state transitions through SetActive() and OnTriggerEnter/Exit.
+I also corrected problems with UI prompts not hiding properly during state transitions through SetActive() and OnTriggerEnter/Exit. 
 
 Our proposal helped define the overall theme and core mechanics (exploration, collection, NPC quest progression). But I think it was not detailed enough as we began working, we realized many architectural details were missing, especially regarding Interaction 
 and State management. We had to refine our architecture as we built. For planning tools, we mostly relied on discussion(Discord) to saved time and prevented overlap or confusion, and google doc task breakdown for iteration. Overall, the Proposal gave us direction,
