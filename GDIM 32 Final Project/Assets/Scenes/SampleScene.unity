@@ -562,7 +562,7 @@ MonoBehaviour:
   interactDistance: 0.8
   inspectDistanceFromCamera: 1
   inspectScaleMultiplier: 1
-  rotateSpeed: 10
+  rotateSpeed: 3
   confirmKey: 101
   inspectSfx: {fileID: 0}
   pickupSfx: {fileID: 0}
@@ -1128,8 +1128,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.5866271, y: 1.8654821, z: 1.5014641}
-  m_Center: {x: 0.06654825, y: 0.43274117, z: 0.46370608}
+  m_Size: {x: 0.5866271, y: 1.8654821, z: 1.5767905}
+  m_Center: {x: 0.06654835, y: 0.43274117, z: 0.5013704}
 --- !u!1 &419310275
 GameObject:
   m_ObjectHideFlags: 0
@@ -1901,7 +1901,7 @@ MonoBehaviour:
   interactDistance: 0.8
   inspectDistanceFromCamera: 1
   inspectScaleMultiplier: 2
-  rotateSpeed: 10
+  rotateSpeed: 3
   confirmKey: 101
   inspectSfx: {fileID: 0}
   pickupSfx: {fileID: 0}
@@ -2596,7 +2596,7 @@ MonoBehaviour:
   interactDistance: 0.8
   inspectDistanceFromCamera: 1
   inspectScaleMultiplier: 2
-  rotateSpeed: 10
+  rotateSpeed: 3
   confirmKey: 101
   inspectSfx: {fileID: 0}
   pickupSfx: {fileID: 0}
@@ -4190,7 +4190,7 @@ MonoBehaviour:
   interactDistance: 10.8
   inspectDistanceFromCamera: 0.8
   inspectScaleMultiplier: 1
-  rotateSpeed: 10
+  rotateSpeed: 3
   confirmKey: 101
   inspectSfx: {fileID: 0}
   pickupSfx: {fileID: 0}
@@ -4942,7 +4942,7 @@ MonoBehaviour:
   interactDistance: 1
   inspectDistanceFromCamera: 1
   inspectScaleMultiplier: 1
-  rotateSpeed: 10
+  rotateSpeed: 3
   confirmKey: 101
   inspectSfx: {fileID: 0}
   pickupSfx: {fileID: 0}
