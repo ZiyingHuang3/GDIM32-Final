@@ -82,3 +82,9 @@ Put your individual final Devlog here.
 [Font](https://www.dafont.com/vcr-osd-mono.font)-UI
 
 [BGM](https://www.youtube.com/watch?v=u1ENryv3WB4)-Background music
+
+[Sand Clock](https://assetstore.unity.com/packages/3d/props/interior/sand-clock-8466)- Environment asset
+
+[Cheval Mirror](https://assetstore.unity.com/packages/3d/props/cheval-mirror-259424)- Environment asset
+
+[Table & Chair](https://assetstore.unity.com/packages/3d/props/3d-game-asset-table-chair-sets-199726)- Environment asset
