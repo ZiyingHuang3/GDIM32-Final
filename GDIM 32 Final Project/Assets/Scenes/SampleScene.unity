@@ -1539,7 +1539,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 5
   _playerRigidbody: {fileID: 522665946}
-  _turnSpeed: 180
+  _turnSpeed: 160
   _moveSpeed: 3
   _jump: 4
   handSocket: {fileID: 2111128747}
@@ -7990,7 +7990,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Start Game
+  m_text: 'WASD + Space to Jump
+
+
+    Start Game'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6dc2d6a6fec707140b6987b119041f5c, type: 2}
   m_sharedMaterial: {fileID: -7842977961620723041, guid: 6dc2d6a6fec707140b6987b119041f5c, type: 2}
