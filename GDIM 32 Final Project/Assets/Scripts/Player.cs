@@ -32,7 +32,6 @@ public class Player : MonoBehaviour
     [SerializeField] private Camera playerCamera;
     [SerializeField] private float interactDistance = 3f;
     [SerializeField] private LayerMask interactLayers = ~0;
-    //private Transform _cameraTrans;
 
     public Inventory Inventory { get; private set; } = new Inventory();
 
@@ -68,12 +67,6 @@ public class Player : MonoBehaviour
     {
         _canMove = true;
     }
-
-   // private void Start()
-    //{
-    //    Cursor.lockState = CursorLockMode.Locked;
-      //  _cameraTrans = Camera.main.transform;
-   // }
     void Update()
     {
         //movement
