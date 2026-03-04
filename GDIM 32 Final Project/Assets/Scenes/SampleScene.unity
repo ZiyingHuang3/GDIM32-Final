@@ -3478,7 +3478,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueUI: {fileID: 421419312}
-  requiredItems: 0000000000000000000000000000000000000000
+  requiredItems: 0500000001000000020000000000000004000000
   rewardItem: 6
   consumeRequiredItems: 1
   talkPrompt: {fileID: 147960823}
