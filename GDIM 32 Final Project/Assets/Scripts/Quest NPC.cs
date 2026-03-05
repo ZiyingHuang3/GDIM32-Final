@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using UnityEngine.UIElements;
 
 public class KeyQuestNPC : MonoBehaviour, IInteractable
 {
@@ -21,12 +20,12 @@ public class KeyQuestNPC : MonoBehaviour, IInteractable
     [SerializeField] private TMP_Text talkText;
     [SerializeField] private string talkMsg = "Click to talk";
 
-    private Camera cam;
     private bool introASeen;
     private bool introBSeen;
     private bool questStarted;
     private bool questCompleted;
     private Player currentPlayer;
+
     [Header("Gyroid Conversation Text")]
     [TextArea] [SerializeField] private string introLine =
         "You are somewhere between memory and nightmare. This place does not like visitors.";
@@ -53,43 +52,49 @@ public class KeyQuestNPC : MonoBehaviour, IInteractable
 
     private void Start()
     {
-        cam = Camera.main;
-
-        if (talkPrompt != null)
-            talkPrompt.SetActive(false);
-
-        if (talkText != null)
-            talkText.text = talkMsg;
+        if (talkPrompt != null) talkPrompt.SetActive(false);
+        if (talkText != null) talkText.text = talkMsg;
+        if (dialogueUI == null) dialogueUI = FindObjectOfType<DialogueUI>();
     }
+
     private void OnTriggerEnter(Collider other)
     {
         if (!other.CompareTag("Player")) return;
-
-        if (talkPrompt != null && !questCompleted) 
-            talkPrompt.SetActive(true);
+        if (talkPrompt != null && !questCompleted) talkPrompt.SetActive(true);
     }
 
     private void OnTriggerExit(Collider other)
     {
         if (!other.CompareTag("Player")) return;
-
-        if (talkPrompt != null)
-            talkPrompt.SetActive(false);
+        if (talkPrompt != null) talkPrompt.SetActive(false);
     }
+
     public string GetHint() => "Talk";
+
     public void Interact(Player player)
     {
-        
         if (player == null) return;
+
         currentPlayer = player;
-        if (talkPrompt != null)
-            talkPrompt.SetActive(false);
+        currentPlayer.SetCanMove(false);
 
-        if (dialogueUI == null) dialogueUI = FindObjectOfType<DialogueUI>();
-
+        if (talkPrompt != null) talkPrompt.SetActive(false);
+        if (dialogueUI == null)
+    {
+        Debug.LogError("NPC DialogueUI is not assigned in Inspector!");
+        currentPlayer.SetCanMove(true);
+        return;
+    }
+        if (dialogueUI == null)
+       {
+        Debug.LogError("DialogueUI not found in scene (or disabled).");
+        currentPlayer.SetCanMove(true);
+        return;
+        }
+    currentPlayer.SetCanMove(false);
         if (questCompleted)
         {
-            dialogueUI.ShowOne("Go. Before the house notices you again.", "OK", () => dialogueUI.Hide());
+            dialogueUI.ShowOne("Go. Before the house notices you again.", "OK", EndDialogue);
             return;
         }
 
@@ -102,14 +107,20 @@ public class KeyQuestNPC : MonoBehaviour, IInteractable
         ShowQuestCheck();
     }
 
-     private void ShowIntroMenu()
+    private void EndDialogue()
+    {
+        if (dialogueUI != null) dialogueUI.Hide();
+        if (currentPlayer != null) currentPlayer.SetCanMove(true);
+    }
+
+    private void ShowIntroMenu()
     {
         if (introASeen && introBSeen)
         {
             dialogueUI.ShowOne(introEndingLine, "OK", () =>
             {
                 questStarted = true;
-                dialogueUI.Hide();
+                EndDialogue();
             });
             return;
         }
@@ -122,7 +133,7 @@ public class KeyQuestNPC : MonoBehaviour, IInteractable
         );
     }
 
-     private void OnIntroPick(int idx)
+    private void OnIntroPick(int idx)
     {
         if (idx == 0)
         {
@@ -134,14 +145,13 @@ public class KeyQuestNPC : MonoBehaviour, IInteractable
             introBSeen = true;
             dialogueUI.ShowOne(choiceBReply, "Back", ShowIntroMenu);
         }
-
     }
 
     private void ShowQuestCheck()
     {
         if (!QuestManager.Instance.HasAll(currentPlayer, requiredItems))
         {
-            dialogueUI.ShowOne(notReadyLine, "OK", () => dialogueUI.Hide());
+            dialogueUI.ShowOne(notReadyLine, "OK", EndDialogue);
             return;
         }
 
@@ -157,7 +167,7 @@ public class KeyQuestNPC : MonoBehaviour, IInteractable
     {
         if (idx == 1)
         {
-            dialogueUI.Hide();
+            EndDialogue();
             return;
         }
 
@@ -166,16 +176,9 @@ public class KeyQuestNPC : MonoBehaviour, IInteractable
 
         currentPlayer.Inventory.Add(rewardItem);
         questCompleted = true;
-        currentPlayer.Inventory.Add(rewardItem);
 
-        var keyVisual = currentPlayer.GetComponent<Player>();
-        if (keyVisual != null)
-         keyVisual.RefreshKeyInHand(currentPlayer.Inventory);
+        currentPlayer.RefreshKeyInHand(currentPlayer.Inventory);
 
-        dialogueUI.ShowOne(giveKeyLine, "OK", () => dialogueUI.Hide());
+        dialogueUI.ShowOne(giveKeyLine, "OK", EndDialogue);
     }
-   
 }
-
-
-
