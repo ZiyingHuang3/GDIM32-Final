@@ -33,6 +33,9 @@ public class Player : MonoBehaviour
     [SerializeField] private float interactDistance = 3f;
     [SerializeField] private LayerMask interactLayers = ~0;
 
+    [Header("Camera")]
+    [SerializeField] private float mouseSensitivity = 100f;
+    private float xRotation = 0f;
     public Inventory Inventory { get; private set; } = new Inventory();
 
     private void Awake()
@@ -51,6 +54,10 @@ public class Player : MonoBehaviour
 
         //if (ui == null) ui = FindObjectOfType<UIManager>();
         if (playerCamera == null) playerCamera = Camera.main;
+
+        //camera 
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
     }
 
     private void OnEnable()
@@ -89,6 +96,16 @@ public class Player : MonoBehaviour
             _playerRigidbody.AddForce(Vector3.up * _jump, ForceMode.Impulse);
             _isGrounded = false;
         }
+
+        //camera
+        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
+        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
+
+        xRotation -= mouseY;
+        xRotation = Mathf.Clamp(xRotation, -80f, 80f);
+
+        playerCamera.transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
+        transform.Rotate(Vector3.up * mouseX);
 
     }
     private void FixedUpdate()
