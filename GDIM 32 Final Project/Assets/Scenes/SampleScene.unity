@@ -1552,7 +1552,7 @@ MonoBehaviour:
   interactLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  mouseSensitivity: 1000
+  mouseSensitivity: 1500
 --- !u!136 &522665949
 CapsuleCollider:
   m_ObjectHideFlags: 0

@@ -122,14 +122,10 @@ public bool CanMove => _canMove;
     {
         if (!_canMove) return;
 
-        // forward/back movement 
-        Vector3 movement = transform.forward * vertical * _moveSpeed * Time.fixedDeltaTime;
+        // movement
+        Vector3 moveDirection = transform.forward * vertical + transform.right * horizontal;
+        Vector3 movement = moveDirection * _moveSpeed * Time.fixedDeltaTime;
         _playerRigidbody.MovePosition(_playerRigidbody.position + movement);
-
-        // rotate
-        float turn = horizontal * _turnSpeed * Time.fixedDeltaTime;
-        Quaternion turnRotation = Quaternion.Euler(0, turn, 0);
-        _playerRigidbody.MoveRotation(_playerRigidbody.rotation * turnRotation);
     }
     private void TryClickInteract()
     {
