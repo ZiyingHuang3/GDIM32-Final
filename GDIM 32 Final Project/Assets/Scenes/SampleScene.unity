@@ -1269,7 +1269,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &421419312
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3479,7 +3479,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueUI: {fileID: 421419312}
-  requiredItems: 0000000000000000000000000000000000000000
+  requiredItems: 0500000001000000020000000000000004000000
   rewardItem: 6
   consumeRequiredItems: 1
   talkPrompt: {fileID: 147960823}

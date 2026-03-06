@@ -74,15 +74,25 @@ public class Player : MonoBehaviour
     {
         _canMove = true;
     }
+    public void SetCanMove(bool value)
+{
+    _canMove = value;
+    if (!value)
+    {
+        vertical = 0f;
+        horizontal = 0f;
+    }
+}
+
+public bool CanMove => _canMove;
     void Update()
     {
+   
         //movement
-        if (!_canMove) return;
-
+        if (!_canMove) return; 
         vertical = Input.GetAxis("Vertical");
         horizontal = Input.GetAxis("Horizontal");
-
-
+ 
         //interact
         
          if (Input.GetMouseButtonDown(0))
