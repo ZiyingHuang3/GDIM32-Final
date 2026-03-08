@@ -17,6 +17,7 @@ public class ItemPickup : MonoBehaviour
     [Header("Audio")]
     [SerializeField] private AudioClip inspectSfx; 
     [SerializeField] private AudioClip pickupSfx; 
+    [SerializeField] private bool playPickupSound = true;
 
     //private Player player;
     private Camera cam;
@@ -113,13 +114,17 @@ public class ItemPickup : MonoBehaviour
         PlayClip(inspectSfx);
     }
     private void ConfirmPickup()
+{
+    GameEvents.OnItemPickedUp?.Invoke(itemId);
+
+    if (playPickupSound)
     {
-        //player.Inventory.Add(itemId);
-        GameEvents.OnItemPickedUp?.Invoke(itemId);
         PlayClip(pickupSfx);
-        gameObject.SetActive(false);
-        ui.HidePrompt();
     }
+
+    gameObject.SetActive(false);
+    ui.HidePrompt();
+}
 
     private void ExitInspect(bool restore)
     {
