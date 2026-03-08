@@ -17,7 +17,8 @@ public class ItemPickup : MonoBehaviour
     [Header("Audio")]
     [SerializeField] private AudioClip inspectSfx; 
     [SerializeField] private AudioClip pickupSfx; 
-    [SerializeField] private bool playPickupSound = true;
+    [SerializeField] private bool playInspectSound = false;
+[SerializeField] private bool playPickupSound = true;
 
     //private Player player;
     private Camera cam;
@@ -111,7 +112,10 @@ public class ItemPickup : MonoBehaviour
         transform.localRotation = Quaternion.identity;
         transform.localScale = originalScale * inspectScaleMultiplier;
 
-        PlayClip(inspectSfx);
+       if (playInspectSound)
+        {
+            PlayClip(inspectSfx);
+        }
     }
     private void ConfirmPickup()
 {
