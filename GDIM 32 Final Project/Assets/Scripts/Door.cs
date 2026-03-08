@@ -9,6 +9,9 @@ public class DoorUnlock : MonoBehaviour
     public Animator doorAnimator;
     public ItemId requiredKey = ItemId.Key;
     [SerializeField] private Collider solidCollider;
+    [SerializeField] private Collider ExitTrigger;
+    [SerializeField] private GameObject GameWin;
+    private Player player;
     private bool opened = false;
 
     private void Awake()
@@ -28,7 +31,7 @@ public class DoorUnlock : MonoBehaviour
     {
         if (opened) return;
 
-        Player player = other.GetComponent<Player>();
+        player = other.GetComponent<Player>();
         if (player == null) return;
 
         if (!player.Inventory.Has(requiredKey)) return;
@@ -38,6 +41,17 @@ public class DoorUnlock : MonoBehaviour
         if (solidCollider != null)
             solidCollider.enabled = false;
         opened = true;
+        
+    }
+    private void Update()
+    {
+        if (!opened || player == null) return;
+
+        if (player.GetComponent<Collider>().bounds.Intersects(ExitTrigger.bounds))
+        {
+            GameWin.SetActive(true);
+            Time.timeScale = 0f;
+        }
     }
 }
 
