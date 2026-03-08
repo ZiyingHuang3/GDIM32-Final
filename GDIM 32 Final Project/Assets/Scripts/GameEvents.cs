@@ -6,13 +6,13 @@ using UnityEngine;
 public static class GameEvents 
 {
     //player
-    public static Action<int> OnHealthChanged;
-    public static Action OnPlayerDied;
+    public static event Action<int> OnHealthChanged;
+    public static event Action OnPlayerDied;
 
     //UI
-    public static Action OnGameStarted;
+    public static event Action OnGameStarted;
 
     //inventory
-    public static Action<ItemId> OnItemPickedUp;
-    public static Action<ItemId> OnItemRemoved;
+    public static event Action<ItemId> OnItemPickedUp;
+    public static event Action<ItemId> OnItemRemoved;
 }
