@@ -566,6 +566,8 @@ MonoBehaviour:
   confirmKey: 101
   inspectSfx: {fileID: 0}
   pickupSfx: {fileID: 0}
+  playInspectSound: 0
+  playPickupSound: 1
 --- !u!65 &101114373
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2374,8 +2376,10 @@ MonoBehaviour:
   inspectScaleMultiplier: 2
   rotateSpeed: 3
   confirmKey: 101
-  inspectSfx: {fileID: 0}
+  inspectSfx: {fileID: 8300000, guid: c0f609ade22efe54a8e0e5c0560c043e, type: 3}
   pickupSfx: {fileID: 0}
+  playInspectSound: 1
+  playPickupSound: 1
 --- !u!65 &571520086
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3289,6 +3293,8 @@ MonoBehaviour:
   confirmKey: 101
   inspectSfx: {fileID: 0}
   pickupSfx: {fileID: 0}
+  playInspectSound: 0
+  playPickupSound: 1
 --- !u!65 &797966737
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4959,6 +4965,8 @@ MonoBehaviour:
   confirmKey: 101
   inspectSfx: {fileID: 0}
   pickupSfx: {fileID: 0}
+  playInspectSound: 0
+  playPickupSound: 1
 --- !u!65 &1323379171
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5845,6 +5853,8 @@ MonoBehaviour:
   confirmKey: 101
   inspectSfx: {fileID: 0}
   pickupSfx: {fileID: 0}
+  playInspectSound: 0
+  playPickupSound: 1
 --- !u!65 &1769253556
 BoxCollider:
   m_ObjectHideFlags: 0
