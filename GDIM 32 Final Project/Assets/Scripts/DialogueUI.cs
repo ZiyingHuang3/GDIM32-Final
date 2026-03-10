@@ -34,7 +34,11 @@ public class DialogueUI : MonoBehaviour
         {
             choiceAText.text = choiceA;
             choiceAButton.onClick.RemoveAllListeners();
-            choiceAButton.onClick.AddListener(() => onChoose?.Invoke(0));
+            choiceAButton.onClick.AddListener(() => 
+            {
+                  Debug.Log("CLICK A WORKED");
+                onChoose?.Invoke(0);
+            });
         }
 
         choiceBButton.gameObject.SetActive(showB);
@@ -42,7 +46,10 @@ public class DialogueUI : MonoBehaviour
         {
             choiceBText.text = choiceB;
             choiceBButton.onClick.RemoveAllListeners();
-            choiceBButton.onClick.AddListener(() => onChoose?.Invoke(1));
+            choiceBButton.onClick.AddListener(() => 
+            {
+                onChoose?.Invoke(1);
+        });
         }
     }
 
