@@ -1797,7 +1797,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 5
   _playerRigidbody: {fileID: 522665946}
-  _turnSpeed: 160
+  _turnSpeed: 180
   _moveSpeed: 3
   _jump: 4
   handSocket: {fileID: 2111128747}
@@ -1808,7 +1808,7 @@ MonoBehaviour:
   interactLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  mouseSensitivity: 1500
+  mouseSensitivity: 400
 --- !u!136 &522665949
 CapsuleCollider:
   m_ObjectHideFlags: 0
