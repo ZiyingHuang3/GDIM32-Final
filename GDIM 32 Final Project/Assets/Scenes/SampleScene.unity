@@ -1503,7 +1503,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   doorAnimator: {fileID: 429354287}
-  requiredKey: 6
+  requiredKey: 4
   solidCollider: {fileID: 429354291}
   ExitTrigger: {fileID: 457334220}
   GameWin: {fileID: 1310977909}
@@ -1526,8 +1526,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.390295, y: 2.1057181, z: 5.277048}
-  m_Center: {x: 0.14428091, y: 0.94955856, z: -2.4738858}
+  m_Size: {x: 1.390295, y: 2.1057181, z: 2.0170822}
+  m_Center: {x: 0.14428109, y: 0.94955856, z: -0.84390783}
 --- !u!65 &429354291
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2977,7 +2977,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8897093224900880590, guid: 897901aeb4e224f4babed88a1442f52a, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.9995043
       objectReference: {fileID: 0}
     - target: {fileID: 8897093224900880590, guid: 897901aeb4e224f4babed88a1442f52a, type: 3}
       propertyPath: m_LocalRotation.x
@@ -2985,7 +2985,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8897093224900880590, guid: 897901aeb4e224f4babed88a1442f52a, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: -0.031483997
       objectReference: {fileID: 0}
     - target: {fileID: 8897093224900880590, guid: 897901aeb4e224f4babed88a1442f52a, type: 3}
       propertyPath: m_LocalRotation.z
@@ -2997,7 +2997,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8897093224900880590, guid: 897901aeb4e224f4babed88a1442f52a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: -3.608
       objectReference: {fileID: 0}
     - target: {fileID: 8897093224900880590, guid: 897901aeb4e224f4babed88a1442f52a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
