@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28634d47fc3e1164a8d87507945d53c0, type: 3}
   m_Name: ReadyLine
   m_EditorClassIdentifier: 
-  _lines:
+  lines:
   - "I can feel them\u2026 The things I lost. Will you give them to me?"
-  _playerReplyOptions: []
-  _npcReplies: []
+  playerReplyOptions: []
+  npcReplies: []

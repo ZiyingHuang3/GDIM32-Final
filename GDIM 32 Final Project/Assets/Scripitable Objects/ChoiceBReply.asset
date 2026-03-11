@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28634d47fc3e1164a8d87507945d53c0, type: 3}
   m_Name: ChoiceBReply
   m_EditorClassIdentifier: 
-  _lines:
+  lines:
   - "Escape is possible. But nothing here comes without a price. Find the things
     I lost\u2026 and I may help you."
-  _playerReplyOptions: []
-  _npcReplies: []
+  playerReplyOptions: []
+  npcReplies: []

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28634d47fc3e1164a8d87507945d53c0, type: 3}
   m_Name: NotReadyLine
   m_EditorClassIdentifier: 
-  _lines:
+  lines:
   - You are not ready. Find the things I lost.
-  _playerReplyOptions: []
-  _npcReplies: []
+  playerReplyOptions: []
+  npcReplies: []

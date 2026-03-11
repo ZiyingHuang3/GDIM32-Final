@@ -12,7 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28634d47fc3e1164a8d87507945d53c0, type: 3}
   m_Name: StartNode_DialogueLine
   m_EditorClassIdentifier: 
-  _lines:
+  lines:
   - You are somewhere between memory and nightmare. This place does not like visitors.
-  _playerReplyOptions: []
-  _npcReplies: []
+  playerReplyOptions:
+  - Why am I here?
+  - How do I get out?
+  npcReplies:
+  - {fileID: 11400000, guid: 160073406eac946408f17f6dd2bc63fc, type: 2}
+  - {fileID: 11400000, guid: a13712f3ab159fb48bbbf2fb7ba52f18, type: 2}

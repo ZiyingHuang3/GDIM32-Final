@@ -4251,37 +4251,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.6428793, y: 0.75493586, z: 0.51981974}
   m_Center: {x: 0.01920068, y: 0.12253165, z: -0.037451357}
---- !u!114 &960267563
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 960267558}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97c8b3ee0e53f44dbad285348b8f84e2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogueUI: {fileID: 421419312}
-  requiredItems: 0500000001000000020000000000000004000000
-  rewardItem: 6
-  consumeRequiredItems: 1
-  talkPrompt: {fileID: 147960823}
-  talkText: {fileID: 752169016}
-  talkMsg: Click to talk
-  introLine: You are somewhere between memory and nightmare. This place does not
-    like visitors.
-  choiceATitle: Why am I here?
-  choiceAReply: Not everyone who enters remembers why. Maybe the house chose you.
-  choiceBTitle: How do I get out?
-  choiceBReply: "Escape is possible. But nothing here comes without a price. Find
-    the things I lost\u2026 and I may help you."
-  introEndingLine: "Be aware of what is in the darkness. If you stay too long\u2026
-    this place will start taking pieces of you."
-  notReadyLine: You are not ready. Find the things I lost.
-  readyLine: "I can feel them\u2026 The things I lost. Will you give them to me?"
-  giveKeyLine: You have done well. Take the key. And find the way out.
 --- !u!4 &960267564 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4b5c446ac30c2fe4586b4f7396e29093, type: 3}
@@ -4308,6 +4277,31 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 2
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &960267566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 960267558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97c8b3ee0e53f44dbad285348b8f84e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueUI: {fileID: 421419312}
+  requiredItems: 0000000001000000020000000500000004000000
+  rewardItem: 6
+  consumeRequiredItems: 1
+  talkPrompt: {fileID: 147960823}
+  talkText: {fileID: 752169016}
+  talkMsg: Click to talk
+  introNode: {fileID: 11400000, guid: 5ac6fcc169d76064d93088dfe0f69e9f, type: 2}
+  introEndingNode: {fileID: 11400000, guid: 6e7b722101007a14ab32fbb6d5699387, type: 2}
+  notReadyNode: {fileID: 11400000, guid: 631fb2cc6fd8cc24ca5e8cdbe28680d2, type: 2}
+  readyNode: {fileID: 11400000, guid: ebb8976b2cacbfd4d9fee9390af6461a, type: 2}
+  giveKeyNode: {fileID: 11400000, guid: 0c8ec7d344137b54896408697e736796, type: 2}
+  completedNode: {fileID: 11400000, guid: 3b4ae66777b494ef4b90c92867fc1120, type: 2}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -5697,7 +5691,7 @@ PrefabInstance:
       addedObject: {fileID: 960267565}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4b5c446ac30c2fe4586b4f7396e29093, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 960267563}
+      addedObject: {fileID: 960267566}
   m_SourcePrefab: {fileID: 100100000, guid: 4b5c446ac30c2fe4586b4f7396e29093, type: 3}
 --- !u!1001 &1519217584
 PrefabInstance:

@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28634d47fc3e1164a8d87507945d53c0, type: 3}
   m_Name: ChoiceAReply_DialogueLine
   m_EditorClassIdentifier: 
-  _lines:
+  lines:
   - Not everyone who enters remembers why. Maybe the house chose you.
-  _playerReplyOptions: []
-  _npcReplies: []
+  playerReplyOptions:
+  - 
+  npcReplies:
+  - {fileID: 0}

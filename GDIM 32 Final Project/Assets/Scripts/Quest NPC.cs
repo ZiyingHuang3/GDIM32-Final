@@ -20,35 +20,19 @@ public class KeyQuestNPC : MonoBehaviour, IInteractable
     [SerializeField] private TMP_Text talkText;
     [SerializeField] private string talkMsg = "Click to talk";
 
+    [Header("Dialogue Nodes")]
+    [SerializeField] private DialogueNode introNode;
+    [SerializeField] private DialogueNode introEndingNode;
+    [SerializeField] private DialogueNode notReadyNode;
+    [SerializeField] private DialogueNode readyNode;
+    [SerializeField] private DialogueNode giveKeyNode;
+    [SerializeField] private DialogueNode completedNode;
+
     private bool introASeen;
     private bool introBSeen;
     private bool questStarted;
     private bool questCompleted;
     private Player currentPlayer;
-
-    [Header("Gyroid Conversation Text")]
-    [TextArea] [SerializeField] private string introLine =
-        "You are somewhere between memory and nightmare. This place does not like visitors.";
-
-    [SerializeField] private string choiceATitle = "Why am I here?";
-    [TextArea] [SerializeField] private string choiceAReply =
-        "Not everyone who enters remembers why. Maybe the house chose you.";
-
-    [SerializeField] private string choiceBTitle = "How do I get out?";
-    [TextArea] [SerializeField] private string choiceBReply =
-        "Escape is possible. But nothing here comes without a price. Find the things I lost… and I may help you.";
-
-    [TextArea] [SerializeField] private string introEndingLine =
-        "Be aware of what is in the darkness. If you stay too long… this place will start taking pieces of you.";
-
-    [TextArea] [SerializeField] private string notReadyLine =
-        "You are not ready. Find the things I lost.";
-
-    [TextArea] [SerializeField] private string readyLine =
-        "I can feel them… The things I lost. Will you give them to me?";
-
-    [TextArea] [SerializeField] private string giveKeyLine =
-        "You have done well. Take the key. And find the way out.";
 
     private void Start()
     {
@@ -79,22 +63,17 @@ public class KeyQuestNPC : MonoBehaviour, IInteractable
         currentPlayer.SetCanMove(false);
 
         if (talkPrompt != null) talkPrompt.SetActive(false);
+
         if (dialogueUI == null)
-    {
-        Debug.LogError("NPC DialogueUI is not assigned in Inspector!");
-        currentPlayer.SetCanMove(true);
-        return;
-    }
-        if (dialogueUI == null)
-       {
-        Debug.LogError("DialogueUI not found in scene (or disabled).");
-        currentPlayer.SetCanMove(true);
-        return;
+        {
+            Debug.LogError("DialogueUI not found in scene or not assigned.");
+            currentPlayer.SetCanMove(true);
+            return;
         }
-    currentPlayer.SetCanMove(false);
+
         if (questCompleted)
         {
-            dialogueUI.ShowOne("Go. Before the house notices you again.", "OK", EndDialogue);
+            ShowSingleNode(completedNode, EndDialogue);
             return;
         }
 
@@ -115,9 +94,16 @@ public class KeyQuestNPC : MonoBehaviour, IInteractable
 
     private void ShowIntroMenu()
     {
+        if (introNode == null)
+        {
+            Debug.LogWarning("Intro node is missing.");
+            EndDialogue();
+            return;
+        }
+
         if (introASeen && introBSeen)
         {
-            dialogueUI.ShowOne(introEndingLine, "OK", () =>
+            ShowSingleNode(introEndingNode, () =>
             {
                 questStarted = true;
                 EndDialogue();
@@ -125,40 +111,63 @@ public class KeyQuestNPC : MonoBehaviour, IInteractable
             return;
         }
 
+        string introLine = GetFirstLine(introNode);
+        string choiceA = GetChoiceText(introNode, 0);
+        string choiceB = GetChoiceText(introNode, 1);
+
         dialogueUI.ShowTwoChoices(
             introLine,
-            choiceATitle, showA: !introASeen,
-            choiceBTitle, showB: !introBSeen,
+            choiceA, !introASeen,
+            choiceB, !introBSeen,
             OnIntroPick
         );
     }
 
     private void OnIntroPick(int idx)
     {
+        if (introNode == null || introNode.npcReplies == null || idx < 0 || idx >= introNode.npcReplies.Length)
+        {
+            EndDialogue();
+            return;
+        }
+
+        DialogueNode replyNode = introNode.npcReplies[idx];
+
         if (idx == 0)
         {
             introASeen = true;
-            dialogueUI.ShowOne(choiceAReply, "Back", ShowIntroMenu);
         }
         else
         {
             introBSeen = true;
-            dialogueUI.ShowOne(choiceBReply, "Back", ShowIntroMenu);
         }
+
+        ShowSingleNode(replyNode, ShowIntroMenu);
     }
 
     private void ShowQuestCheck()
     {
         if (!QuestManager.Instance.HasAll(currentPlayer, requiredItems))
         {
-            dialogueUI.ShowOne(notReadyLine, "OK", EndDialogue);
+            ShowSingleNode(notReadyNode, EndDialogue);
             return;
         }
 
+        if (readyNode == null)
+        {
+            Debug.LogWarning("Ready node is missing.");
+            EndDialogue();
+            return;
+        }
+
+        string readyLine = GetFirstLine(readyNode);
+        string choiceA = GetChoiceText(readyNode, 0, "Give items");
+        string choiceB = GetChoiceText(readyNode, 1, "Not yet");
+
         dialogueUI.ShowTwoChoices(
             readyLine,
-            "Give items", true,
-            "Not yet", true,
+            choiceA, true,
+            choiceB, true,
             OnTurnInPick
         );
     }
@@ -179,6 +188,32 @@ public class KeyQuestNPC : MonoBehaviour, IInteractable
 
         currentPlayer.RefreshKeyInHand(currentPlayer.Inventory);
 
-        dialogueUI.ShowOne(giveKeyLine, "OK", EndDialogue);
+        ShowSingleNode(giveKeyNode, EndDialogue);
+    }
+
+    private void ShowSingleNode(DialogueNode node, System.Action onDone)
+    {
+        if (node == null)
+        {
+            onDone?.Invoke();
+            return;
+        }
+
+        string line = GetFirstLine(node);
+        dialogueUI.ShowOne(line, "OK", onDone);
+    }
+
+    private string GetFirstLine(DialogueNode node)
+    {
+        if (node == null || node.lines == null || node.lines.Length == 0)
+            return "...";
+        return node.lines[0];
+    }
+
+    private string GetChoiceText(DialogueNode node, int index, string fallback = "OK")
+    {
+        if (node == null || node.playerReplyOptions == null) return fallback;
+        if (index < 0 || index >= node.playerReplyOptions.Length) return fallback;
+        return node.playerReplyOptions[index];
     }
 }
