@@ -16,7 +16,7 @@ public class DamageScreen : MonoBehaviour
     private void OnEnable()
     {
         GameEvents.OnHealthChanged += OnHealthChanged;
-        GameEvents.OnGameStarted += OnGameStarted;
+       // GameEvents.OnGameStarted += OnGameStarted;
     }
 
     private void OnDisable()
@@ -24,6 +24,10 @@ public class DamageScreen : MonoBehaviour
         GameEvents.OnHealthChanged -= OnHealthChanged;
     }
 
+    private void Start()
+    {
+        overlay.enabled = true;
+    }
     private void OnGameStarted()
     {
         overlay.enabled = true;

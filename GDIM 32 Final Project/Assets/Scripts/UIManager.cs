@@ -27,6 +27,7 @@ public class UIManager : MonoBehaviour
     {
         GameEvents.OnHealthChanged += SetHealth;
         GameEvents.OnPlayerDied += ShowGameOver;
+        //GameEvents.OnOverlayEnabled += StartGame;
     }
 
     private void OnDisable()
@@ -106,6 +107,7 @@ public class UIManager : MonoBehaviour
         UpdateTimerText();
         gameOverPanel.SetActive(false);
        // if (player != null) player.enabled = true;
+
 
     }
 
