@@ -1797,7 +1797,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 5
   _playerRigidbody: {fileID: 522665946}
-  _turnSpeed: 180
+  _turnSpeed: 160
   _moveSpeed: 3
   _jump: 4
   handSocket: {fileID: 2111128747}
@@ -1808,7 +1808,7 @@ MonoBehaviour:
   interactLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  mouseSensitivity: 400
+  mouseSensitivity: 5
 --- !u!136 &522665949
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -4396,8 +4396,8 @@ Transform:
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.18, y: -0.028, z: -0.625}
-  m_LocalScale: {x: 1, y: 0.87959, z: 1}
+  m_LocalPosition: {x: 0.1799997, y: -0.02800002, z: -0.6250002}
+  m_LocalScale: {x: 1, y: 0.8795899, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 522665952}
