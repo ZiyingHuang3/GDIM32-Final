@@ -14,7 +14,7 @@ public class Player : MonoBehaviour
 
     [Header("Movement")]
     [SerializeField] private Rigidbody _playerRigidbody;
-    [SerializeField] private float _turnSpeed = 1f;
+    //[SerializeField] private float _turnSpeed = 1f;
     [SerializeField] private float _moveSpeed;
     [SerializeField] private float _jump;
     [Header("Hand Visual")]
@@ -108,7 +108,7 @@ public bool CanMove => _canMove;
         }
         
         //camera
-        /*float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
+        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity;
 
         xRotation -= mouseY;
@@ -116,7 +116,7 @@ public bool CanMove => _canMove;
 
         playerCamera.transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
         transform.Rotate(Vector3.up * mouseX);
-        */
+        
 
 
     }
@@ -124,20 +124,23 @@ public bool CanMove => _canMove;
     {
         if (!_canMove) return;
 
-        // movement
-        Vector3 movement = transform.forward * vertical * _moveSpeed * Time.fixedDeltaTime;
-         //Vector3 moveDirection = transform.forward * vertical + transform.right * horizontal;
-        //Vector3 movement = moveDirection * _moveSpeed * Time.fixedDeltaTime;
+        // movement reguarl
+        //Vector3 movement = transform.forward * vertical * _moveSpeed * Time.fixedDeltaTime;
+
+        //movement with camera
+         Vector3 moveDirection = transform.forward * vertical + transform.right * horizontal;
+        Vector3 movement = moveDirection * _moveSpeed * Time.fixedDeltaTime;
         _playerRigidbody.MovePosition(_playerRigidbody.position + movement);
 
         // rotate
-        float turn = horizontal * _turnSpeed * Time.fixedDeltaTime;
+       /* float turn = horizontal * _turnSpeed * Time.fixedDeltaTime;
         Quaternion turnRotation = Quaternion.Euler(0, turn, 0);
         _playerRigidbody.MoveRotation(_playerRigidbody.rotation * turnRotation);
+       */
     }
 
-    //private void LateUpdate()
-    //{
+    private void LateUpdate()
+    {
         /*if (Input.GetKey(KeyCode.S))
         {
             xRotation += 60f * Time.deltaTime;
@@ -152,7 +155,7 @@ public bool CanMove => _canMove;
         playerCamera.transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
         */
 
-        /*
+        
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity;
 
@@ -163,8 +166,8 @@ public bool CanMove => _canMove;
 
         Quaternion rot = Quaternion.Euler(0f, mouseX, 0f);
         _playerRigidbody.MoveRotation(_playerRigidbody.rotation * rot);
-        */
-    //}
+        
+    }
     
 
     private void TryClickInteract()

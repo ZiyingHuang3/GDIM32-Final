@@ -1797,7 +1797,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 5
   _playerRigidbody: {fileID: 522665946}
-  _turnSpeed: 160
   _moveSpeed: 3
   _jump: 4
   handSocket: {fileID: 2111128747}
