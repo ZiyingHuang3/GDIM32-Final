@@ -8,13 +8,11 @@ public class Player : MonoBehaviour
 
     [Header("Health")]
     [SerializeField] private int maxHealth = 5;
-    //[SerializeField] private UIManager ui;
     public int CurrentHealth { get; private set; }
     
 
     [Header("Movement")]
     [SerializeField] private Rigidbody _playerRigidbody;
-    //[SerializeField] private float _turnSpeed = 1f;
     [SerializeField] private float _moveSpeed;
     [SerializeField] private float _jump;
     [Header("Hand Visual")]
@@ -25,7 +23,6 @@ public class Player : MonoBehaviour
     private float vertical;
     private float horizontal;
     private bool _canMove = false;
-    //private bool _canMove = true;
     private bool _isGrounded;
    
 
@@ -53,7 +50,6 @@ public class Player : MonoBehaviour
         //
         CurrentHealth = maxHealth;
 
-        //if (ui == null) ui = FindObjectOfType<UIManager>();
         if (playerCamera == null) playerCamera = Camera.main;
 
         //camera 
@@ -88,7 +84,7 @@ public class Player : MonoBehaviour
 public bool CanMove => _canMove;
     void Update()
     {
-   
+
         //movement
         if (!_canMove) return; 
         vertical = Input.GetAxis("Vertical");
@@ -99,6 +95,7 @@ public bool CanMove => _canMove;
          if (Input.GetMouseButtonDown(0))
         {
             TryClickInteract();
+            
         }
 
         //jump
@@ -107,17 +104,6 @@ public bool CanMove => _canMove;
             _playerRigidbody.AddForce(Vector3.up * _jump, ForceMode.Impulse);
             _isGrounded = false;
         }
-        
-        //camera
-        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
-        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity;
-
-        xRotation -= mouseY;
-        xRotation = Mathf.Clamp(xRotation, -80f, 80f);
-
-        playerCamera.transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
-        transform.Rotate(Vector3.up * mouseX);
-        
 
 
     }
@@ -125,37 +111,15 @@ public bool CanMove => _canMove;
     {
         if (!_canMove) return;
 
-        // movement reguarl
-        //Vector3 movement = transform.forward * vertical * _moveSpeed * Time.fixedDeltaTime;
-
         //movement with camera
          Vector3 moveDirection = transform.forward * vertical + transform.right * horizontal;
         Vector3 movement = moveDirection * _moveSpeed * Time.fixedDeltaTime;
         _playerRigidbody.MovePosition(_playerRigidbody.position + movement);
 
-        // rotate
-       /* float turn = horizontal * _turnSpeed * Time.fixedDeltaTime;
-        Quaternion turnRotation = Quaternion.Euler(0, turn, 0);
-        _playerRigidbody.MoveRotation(_playerRigidbody.rotation * turnRotation);
-       */
     }
 
     private void LateUpdate()
     {
-        /*if (Input.GetKey(KeyCode.S))
-        {
-            xRotation += 60f * Time.deltaTime;
-        }
-
-        if (Input.GetKey(KeyCode.W))
-        {
-            xRotation -= 60f * Time.deltaTime;
-        }
-
-        xRotation = Mathf.Clamp(xRotation, -80f, 80f);
-        playerCamera.transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
-        */
-
         
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity;
@@ -170,12 +134,13 @@ public bool CanMove => _canMove;
         
     }
     
-
     private void TryClickInteract()
     {
         if (playerCamera == null) return;
+    
 
         Ray ray = playerCamera.ScreenPointToRay(Input.mousePosition);
+
         if (Physics.Raycast(ray, out RaycastHit hit, interactDistance, interactLayers, QueryTriggerInteraction.Ignore))
         {
             var interactable = hit.collider.GetComponentInParent<IInteractable>();
@@ -192,7 +157,6 @@ public bool CanMove => _canMove;
         CurrentHealth -= amount;
         if (CurrentHealth < 0) CurrentHealth = 0;
 
-       // ui.SetHealth(CurrentHealth);
         GameEvents.OnHealthChanged?.Invoke(CurrentHealth);
         Debug.Log("Player Health: " + CurrentHealth);
 
@@ -208,7 +172,6 @@ public bool CanMove => _canMove;
         vertical = 0f;
         horizontal = 0f;
 
-        //ui.ShowGameOver();
         GameEvents.OnPlayerDied?.Invoke();
         Debug.Log("Player Died");
     }
