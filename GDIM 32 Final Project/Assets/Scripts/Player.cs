@@ -120,7 +120,11 @@ public bool CanMove => _canMove;
 
     private void LateUpdate()
     {
-        
+        if (!_canMove) return;
+
+        if (DialogueManager.Instance != null && DialogueManager.Instance.IsTalking)
+            return;
+
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity;
 

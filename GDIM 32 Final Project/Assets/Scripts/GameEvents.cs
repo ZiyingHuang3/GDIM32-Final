@@ -11,7 +11,6 @@ public static class GameEvents
 
     //UI
     public static Action OnGameStarted;
-  //  public static Action OnOverlayEnabled;
 
     //inventory
     public static Action<ItemId> OnItemPickedUp;
