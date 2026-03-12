@@ -104,6 +104,7 @@ public class UIManager : MonoBehaviour
     {
         timerRunning = false;
         gameOverPanel.SetActive(true);
+
     }
 
     public void StartGame()

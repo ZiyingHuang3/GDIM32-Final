@@ -125,8 +125,8 @@ public bool CanMove => _canMove;
         if (DialogueManager.Instance != null && DialogueManager.Instance.IsTalking)
             return;
 
-        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
-        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity;
+        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity; //* Time.deltaTime;
+        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity;// * Time.deltaTime;
 
         xRotation -= mouseY;
         xRotation = Mathf.Clamp(xRotation, -80f, 80f);
