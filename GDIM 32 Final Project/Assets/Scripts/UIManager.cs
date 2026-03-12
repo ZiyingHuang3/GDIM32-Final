@@ -70,8 +70,17 @@ public class UIManager : MonoBehaviour
             timeLeft = 0f;
             timerRunning = false;
             UpdateTimerText();
-            ShowGameOver(); // time up
-            return;
+
+            if (Player.Instance != null)
+                {
+                    Player.Instance.ForceGameOver();
+                }
+            else
+                {
+                    ShowGameOver();
+                }
+
+    return;
         }
 
         UpdateTimerText();

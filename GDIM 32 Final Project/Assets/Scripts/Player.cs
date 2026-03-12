@@ -27,6 +27,7 @@ public class Player : MonoBehaviour
     private bool _canMove = false;
     //private bool _canMove = true;
     private bool _isGrounded;
+   
 
     [Header("Interact")]
     [SerializeField] private Camera playerCamera;
@@ -210,6 +211,15 @@ public bool CanMove => _canMove;
         //ui.ShowGameOver();
         GameEvents.OnPlayerDied?.Invoke();
         Debug.Log("Player Died");
+    }
+    public void ForceGameOver()
+    {
+        _canMove = false;
+        vertical = 0f;
+        horizontal = 0f;
+
+        GameEvents.OnPlayerDied?.Invoke();
+        Debug.Log("Forced Game Over");
     }
     
    public void RefreshKeyInHand(Inventory inv)
