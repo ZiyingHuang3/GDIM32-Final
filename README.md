@@ -1,11 +1,10 @@
 # GDIM32-Final
 ## Check-In
-### Team Member Name Evelina
+### Evelina
 At this stage of the project, I was mainly responsible for the item pickup system, the damage system for non-main NPCs, and the main NPC dialogue and quest script. I implemented the item pickup system, allowing players to click on objects, inspect them, and add them to the inventory. I connected the pickup logic with the Inventory class and ensured that items are properly removed from the scene after being collected. I also adjusted interaction distance and added sound effects for better feedback.For non-main NPCs, I implemented the damage system. I created trigger-based collision logic so that when the player enters the NPC’s range, the player loses health over time. I also added cooldown control to prevent continuous damage from triggering too quickly.For the main NPC, I developed the full dialogue and quest system. I implemented branching dialogue options using the DialogueUI system, including an interaction loop where both choices must be selected before the dialogue progresses. I also built the quest logic that checks whether the player has collected the required five items before giving the key. This system connects dialogue, inventory checking, and quest progression together.
 
-
 I think our proposal and the breakdown plan are very helpful. They have enabled us to set the most basic goals and also divided the entire game into several parts, making it easier for us to assign tasks. However, during the execution, some problems were encountered. There were some missing details in the "itempickup" section, which caused me to write the wrong code. Later, I corrected it. Also, because the two people were writing the same part, we split the "player" and "player controller" into two separate sections. Later on, we realized that they could be combined. However, the proposal still provided us with an overall direction.
-### Team Member Name Nicole Yang
+### Nicole Yang
 In the Unity Scene, I created mesh colliders for the ground and walls. I created the Player GameObject and attached all the components needed
 such as Rigidbody and colliders. I created the player singleton and wrote code for player movement in the FixedUpdate() method:
 Vector3 movement = transform.forward * vertical * _moveSpeed * Time.fixedDeltaTime; This was for forward and backwards movement. 
@@ -25,7 +24,7 @@ I think our proposal and breakdwon was pretty helpful to start building our game
 needed to start building and coding. The breakdown also gave us the foundation to start coding scripts but it mostly only covered the basic concepts 
 and we came across more specific things that needed more details such as we thought a GameController might be able to manage the overall gameplay but 
 we ended up splitting the items and inventory and related gameplay to separate scripts. 
-### Team Member Name 3 Ziying Huang
+### Ziying Huang
 At this stage of the project, I worked primarily on the player interaction system, game art integration inside Unity, and UI management. I created the UIManager class, which manages the healthText, timerText, startPanel, and gameOverPanel. 
 I also wrote the game state logic, including handling the Start and Restart flow. I added a countdown system using the variables timeLeft and timerRunning, which controls the game timer and triggers the game over state. I built several systems directly in Unity.
 I created a Canvas for NPC interaction prompts and set up collider components (BoxCollider and SphereCollider) to define interaction ranges. I created the NPC Animator controller and adjusted lighting for the atmosphere of the environment. I also applied post-processing color grading 
@@ -52,7 +51,7 @@ know whether the detection area matched our intended gameplay design.
 Put your group Devlog here.
 
 ### Evelina Wang
-Put your individual final Devlog here
+Since the check-in, I have contributed several improvements and bug fixes to the project. First, I modified the dialogue system to improve how conversations are displayed and handled. I worked on scripts such as DialogueUI and KeyQuestNPC to refine the dialogue flow and player interaction. In the DialogueUI class, I adjusted methods including ShowOne() and ShowTwoChoices() so that dialogue lines and player choices are displayed correctly. I also ensured that button callbacks trigger the appropriate dialogue responses. On the NPC side, I updated the KeyQuestNPC script so that the conversation logic properly handles different states of the quest, such as the introduction dialogue, checking whether the player has collected the required items, and giving the key reward once the quest is completed. These changes improved the structure and clarity of the dialogue system and made the interaction with the NPC more stable. Second, I fixed a bug where dialogue buttons could appear on the screen but could not be clicked by the player. This required debugging the UI interaction logic. I reviewed the button setup in Unity and corrected the event binding in the DialogueUI script. Specifically, I updated the button listener setup in the Awake() method and ensured that the Button.onClick events correctly call the dialogue selection logic. I also checked the UI hierarchy and interaction settings to make sure the buttons were not blocked by other UI elements. After these changes, the dialogue buttons now respond correctly when the player clicks them. Third, I fixed a gameplay bug related to the game timer. Previously, when the timer reached zero, the game would display the game over UI, but the player could still move and interact with objects. To fix this, I modified the UIManager script and connected it to the Player script. When the timer runs out (timeLeft <= 0), the UIManager now triggers the game-over logic. I added a method called ForceGameOver() in the Player class, which sets _canMove = false and resets movement input variables such as vertical and horizontal. This prevents the player from moving, jumping, or interacting after the game has ended. I also ensured that the GameEvents.OnPlayerDied event is invoked so that the UI and other systems properly transition to the game-over state.
 ### Nicole Yang
 Put your individual final Devlog here.
 ### Team Member Name 3
