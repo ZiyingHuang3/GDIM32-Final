@@ -125,16 +125,21 @@ public bool CanMove => _canMove;
         if (DialogueManager.Instance != null && DialogueManager.Instance.IsTalking)
             return;
 
-        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity; //* Time.deltaTime;
-        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity;// * Time.deltaTime;
+        //rotate camera when holding right mouse
+        if (Input.GetMouseButton(1))
+        {
 
-        xRotation -= mouseY;
-        xRotation = Mathf.Clamp(xRotation, -80f, 80f);
+            float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
+            float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
 
-        playerCamera.transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
+            xRotation -= mouseY;
+            xRotation = Mathf.Clamp(xRotation, -80f, 80f);
 
-        Quaternion rot = Quaternion.Euler(0f, mouseX, 0f);
-        _playerRigidbody.MoveRotation(_playerRigidbody.rotation * rot);
+            playerCamera.transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
+
+            Quaternion rot = Quaternion.Euler(0f, mouseX, 0f);
+            _playerRigidbody.MoveRotation(_playerRigidbody.rotation * rot);
+        }
         
     }
     

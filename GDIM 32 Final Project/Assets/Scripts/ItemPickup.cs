@@ -62,7 +62,7 @@ public class ItemPickup : MonoBehaviour
     private void Update()
     {
         if (!isInspecting) return;
-        if (Input.GetMouseButton(1))
+        if (Input.GetMouseButton(0))
         {
             float mx = Input.GetAxis("Mouse X");
             float my = Input.GetAxis("Mouse Y");
@@ -92,7 +92,7 @@ public class ItemPickup : MonoBehaviour
     }
     private void EnterInspect()
     {
-        ui.ShowPrompt("Press E to put into bag / Right click to rotate");
+        ui.ShowPrompt("Press E to put into bag / Left click to rotate");
         playerRange = false;
         isInspecting = true;
         originalParent = transform.parent;
