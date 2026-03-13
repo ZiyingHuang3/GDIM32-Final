@@ -1807,7 +1807,7 @@ MonoBehaviour:
   interactLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  mouseSensitivity: 160
+  mouseSensitivity: 130
 --- !u!136 &522665949
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1891,7 +1891,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -5.2578, y: 0.531, z: -10.064}
-  m_LocalScale: {x: 0.64242, y: 0.58414, z: 0.66593}
+  m_LocalScale: {x: 0.67492646, y: 0.61539155, z: 0.66593}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 963194228}
@@ -3180,7 +3180,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -3240,7 +3240,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -0.27, y: 0}
-  m_SizeDelta: {x: 200, y: 50}
+  m_SizeDelta: {x: 257, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &787809135 stripped
 GameObject:
@@ -4401,7 +4401,7 @@ MonoBehaviour:
   consumeRequiredItems: 1
   talkPrompt: {fileID: 147960823}
   talkText: {fileID: 752169016}
-  talkMsg: Click to talk
+  talkMsg: Click on Gyroid to talk
   introNode: {fileID: 11400000, guid: 5ac6fcc169d76064d93088dfe0f69e9f, type: 2}
   introEndingNode: {fileID: 11400000, guid: 6e7b722101007a14ab32fbb6d5699387, type: 2}
   notReadyNode: {fileID: 11400000, guid: 631fb2cc6fd8cc24ca5e8cdbe28680d2, type: 2}
@@ -4496,7 +4496,7 @@ Transform:
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.1799997, y: -0.02800002, z: -0.509}
+  m_LocalPosition: {x: 0.001, y: -0.02800002, z: -0.509}
   m_LocalScale: {x: 1, y: 0.8795899, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
