@@ -20,7 +20,6 @@ public class ItemPickup : MonoBehaviour
     [SerializeField] private bool playInspectSound = false;
 [SerializeField] private bool playPickupSound = true;
 
-    //private Player player;
     private Camera cam;
     private Collider col;
     private bool isInspecting;
@@ -41,7 +40,7 @@ public class ItemPickup : MonoBehaviour
 
     private void Start()
     {
-        //player = FindObjectOfType<Player>();
+       
         cam = Camera.main;
         ui = FindObjectOfType<UIManager>();
         questManager = FindObjectOfType<QuestManager>();
@@ -51,7 +50,7 @@ public class ItemPickup : MonoBehaviour
         if (!playerRange) return;
         if (isInspecting) return;
         if (cam == null) return;
-        //if (player == null || cam == null) return;
+       
         Vector3 camPos = cam.transform.position;
         float distance = Vector3.Distance(camPos, col.ClosestPoint(camPos));
         if (distance > interactDistance)

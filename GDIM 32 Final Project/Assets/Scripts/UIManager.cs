@@ -18,7 +18,6 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject checklistPanel;
     [SerializeField] private GameObject checklistButton;
     [SerializeField] private TMP_Text checklistText;
-    //[SerializeField] private Player player;
 
 
     public int hp = 3;
@@ -30,7 +29,6 @@ public class UIManager : MonoBehaviour
     {
         GameEvents.OnHealthChanged += SetHealth;
         GameEvents.OnPlayerDied += ShowGameOver;
-        //GameEvents.OnOverlayEnabled += StartGame;
     }
 
     private void OnDisable()
@@ -53,9 +51,6 @@ public class UIManager : MonoBehaviour
         timerRunning = false;
 
         promptText.gameObject.SetActive(false);
-
-
-        //if (player != null) player.enabled = false;
 
         startButton.onClick.AddListener(StartGame);
         restartButton.onClick.AddListener(RestartGame);
@@ -136,9 +131,7 @@ public class UIManager : MonoBehaviour
         timeLeft = startSeconds;
         UpdateTimerText();
         gameOverPanel.SetActive(false);
-       // if (player != null) player.enabled = true;
-
-
+       
     }
 
     private void RestartGame()
