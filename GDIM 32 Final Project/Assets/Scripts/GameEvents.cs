@@ -11,6 +11,7 @@ public static class GameEvents
 
     //UI
     public static Action OnGameStarted;
+    public static Action<string> OnSetChecklistText;
 
     //inventory
     public static Action<ItemId> OnItemPickedUp;

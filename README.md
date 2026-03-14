@@ -48,12 +48,27 @@ know whether the detection area matched our intended gameplay design.
 
 ## Final Submission
 ### Group Devlog
-Model-View-Controller:
+Model-View-Controller: The MVC design can be found in the gameevents script which the events is present and then in the player, ui... 
+helped structure bc the code is decoupled and scripts dont need a direct reference to each other, no console errors, dont need to change
+every script when one is changed. easier to write methods and then subscrieb
+
+Describe each of the 3 design patterns used in your final project, especially where in the code they can be found
+and why they helped structure your project. 
+You must be able to explain why all of these design patterns were useful in building your game.
 
 ### Evelina Wang
 Since the check-in, I have contributed several improvements and bug fixes to the project. First, I modified the dialogue system to improve how conversations are displayed and handled. I worked on scripts such as DialogueUI and KeyQuestNPC to refine the dialogue flow and player interaction. In the DialogueUI class, I adjusted methods including ShowOne() and ShowTwoChoices() so that dialogue lines and player choices are displayed correctly. I also ensured that button callbacks trigger the appropriate dialogue responses. On the NPC side, I updated the KeyQuestNPC script so that the conversation logic properly handles different states of the quest, such as the introduction dialogue, checking whether the player has collected the required items, and giving the key reward once the quest is completed. These changes improved the structure and clarity of the dialogue system and made the interaction with the NPC more stable. Second, I fixed a bug where dialogue buttons could appear on the screen but could not be clicked by the player. This required debugging the UI interaction logic. I reviewed the button setup in Unity and corrected the event binding in the DialogueUI script. Specifically, I updated the button listener setup in the Awake() method and ensured that the Button.onClick events correctly call the dialogue selection logic. I also checked the UI hierarchy and interaction settings to make sure the buttons were not blocked by other UI elements. After these changes, the dialogue buttons now respond correctly when the player clicks them. Third, I fixed a gameplay bug related to the game timer. Previously, when the timer reached zero, the game would display the game over UI, but the player could still move and interact with objects. To fix this, I modified the UIManager script and connected it to the Player script. When the timer runs out (timeLeft <= 0), the UIManager now triggers the game-over logic. I added a method called ForceGameOver() in the Player class, which sets _canMove = false and resets movement input variables such as vertical and horizontal. This prevents the player from moving, jumping, or interacting after the game has ended. I also ensured that the GameEvents.OnPlayerDied event is invoked so that the UI and other systems properly transition to the game-over state.
 ### Nicole Yang
-Put your individual final Devlog here.
+Since the check-in, I created an audio indication and flashing red screen when player takes damage. In the Audio script, I wrote
+the method PlayAudio with the code audioSource.PlayOneShot(audioClip); and had the method subscribe to
+GameEvents.OnHealthChanged. I implemented camera movement with right click of mouse because some of the objects that needed to be picked up 
+were below the player. Allowing the player to look around the screen made it easier for item pickups. I wrote the following code for this: 
+if (Input.GetMouseButton(1)) {float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime; 
+float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;... Because the camera now follows the mouse, when player is talking to
+npc they can still look around so I locked the camera when player is speaking to the NPC. I also fixed a few collider issues with the chair and table
+with huggy. The chair was tagged as ground so the player can jump on it but the table was not so there was some incidents where the player eneded up
+not being able to jump at all. I also hadded a collider underneath the table with Springtrap because player could somehow get under it. I added text in
+the start menu to tell wasd for movement and right click for camera rotation. 
 ### Ziying Huang
 Put your individual final Devlog here.
 

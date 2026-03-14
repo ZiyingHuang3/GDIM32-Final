@@ -7,7 +7,7 @@ public class QuestManager : MonoBehaviour
 {
     public static QuestManager Instance { get; private set; }
     [SerializeField] private List<CollectObjective> objectives;
-    [SerializeField] private UIManager uiManager;
+    //[SerializeField] private UIManager uiManager;
     private void Awake()
     {
         if (Instance != null && Instance != this) { Destroy(gameObject); return; }
@@ -46,7 +46,7 @@ public class QuestManager : MonoBehaviour
 
     private void Start()
     {
-        uiManager=FindObjectOfType<UIManager>();
+       // uiManager=FindObjectOfType<UIManager>();
         UpdateChecklistUI();
     }
 
@@ -78,6 +78,7 @@ public class QuestManager : MonoBehaviour
             }
         }
 
-        uiManager.SetChecklistText(text);
+       // uiManager.SetChecklistText(text);
+       GameEvents.OnSetChecklistText?.Invoke(text);
     }
     }

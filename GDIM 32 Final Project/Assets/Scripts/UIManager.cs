@@ -29,12 +29,14 @@ public class UIManager : MonoBehaviour
     {
         GameEvents.OnHealthChanged += SetHealth;
         GameEvents.OnPlayerDied += ShowGameOver;
+        GameEvents.OnSetChecklistText += SetChecklistText;
     }
 
     private void OnDisable()
     {
         GameEvents.OnHealthChanged -= SetHealth;
         GameEvents.OnPlayerDied -= ShowGameOver;
+        GameEvents.OnSetChecklistText -= SetChecklistText;
     }
     private void Start()
     {
