@@ -104,5 +104,6 @@ public class DialogueManager : MonoBehaviour
         currentNode = null;
         currentLineIndex = 0;
         dialogueUI.Hide();
+      
     }
 }

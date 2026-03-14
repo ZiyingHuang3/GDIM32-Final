@@ -15,13 +15,16 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Button restartButton;
     [SerializeField] private float startSeconds = 300f;
     [SerializeField] private TMP_Text promptText;
+    [SerializeField] private GameObject checklistPanel;
+    [SerializeField] private GameObject checklistButton;
+    [SerializeField] private TMP_Text checklistText;
     //[SerializeField] private Player player;
 
 
     public int hp = 3;
     private float timeLeft;
     private bool timerRunning;
-
+    private bool isChecklistOpen = false;
 
     private void OnEnable()
     {
@@ -56,6 +59,8 @@ public class UIManager : MonoBehaviour
 
         startButton.onClick.AddListener(StartGame);
         restartButton.onClick.AddListener(RestartGame);
+        checklistPanel.SetActive(false);
+        checklistButton.SetActive(false);
 
     }
 
@@ -89,6 +94,21 @@ public class UIManager : MonoBehaviour
     {
         promptText.text = msg;
         promptText.gameObject.SetActive(true);
+    }
+
+    public  void ShowChecklistUI()
+    {
+        checklistButton.SetActive(true );
+    }
+    public void ToggleChecklist()
+    {
+        isChecklistOpen = !isChecklistOpen;
+        checklistPanel.SetActive(isChecklistOpen);
+    }
+
+    public void SetChecklistText(string text)
+    {
+        checklistText.text = text;
     }
 
     public void HidePrompt()

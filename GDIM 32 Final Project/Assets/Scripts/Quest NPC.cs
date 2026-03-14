@@ -90,6 +90,11 @@ public class KeyQuestNPC : MonoBehaviour, IInteractable
     {
         if (dialogueUI != null) dialogueUI.Hide();
         if (currentPlayer != null) currentPlayer.SetCanMove(true);
+        UIManager ui = FindObjectOfType<UIManager>();
+        if (ui != null)
+        {
+            ui.ShowChecklistUI();
+        }
     }
 
     private void ShowIntroMenu()

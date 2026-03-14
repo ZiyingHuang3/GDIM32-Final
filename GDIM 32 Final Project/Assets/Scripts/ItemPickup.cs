@@ -31,6 +31,7 @@ public class ItemPickup : MonoBehaviour
     private Transform originalParent;
     private Rigidbody rb;
     private UIManager ui;
+    private QuestManager questManager;
 
     private void Awake()
     {
@@ -43,6 +44,7 @@ public class ItemPickup : MonoBehaviour
         //player = FindObjectOfType<Player>();
         cam = Camera.main;
         ui = FindObjectOfType<UIManager>();
+        questManager = FindObjectOfType<QuestManager>();
     }
     private void OnMouseDown()
     {
@@ -92,7 +94,7 @@ public class ItemPickup : MonoBehaviour
     }
     private void EnterInspect()
     {
-        ui.ShowPrompt("Press E to put into bag / Left click to rotate");
+        ui.ShowPrompt("Press E to put into bag / click to rotate");
         playerRange = false;
         isInspecting = true;
         originalParent = transform.parent;
@@ -126,7 +128,13 @@ public class ItemPickup : MonoBehaviour
         PlayClip(pickupSfx);
     }
 
-    gameObject.SetActive(false);
+    if (questManager != null)
+        {
+            questManager.CollectItem(itemId);
+        }
+
+
+        gameObject.SetActive(false);
     ui.HidePrompt();
 }
 
