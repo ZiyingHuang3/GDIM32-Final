@@ -48,13 +48,13 @@ know whether the detection area matched our intended gameplay design.
 
 ## Final Submission
 ### Group Devlog
-Model-View-Controller: The MVC design can be found in the gameevents script which the events is present and then in the player, ui... 
-helped structure bc the code is decoupled and scripts dont need a direct reference to each other, no console errors, dont need to change
-every script when one is changed. easier to write methods and then subscrieb
-
-Describe each of the 3 design patterns used in your final project, especially where in the code they can be found
-and why they helped structure your project. 
-You must be able to explain why all of these design patterns were useful in building your game.
+Model-View-Controller: The MVC design pattern can be found in the GameEvents script where the events are present. Some of the events are 
+public static Action<int> OnHealthChanged; public static Action OnPlayerDied; public static Action OnGameStarted; These events are then invoked in
+their respective scripts where the method and actions are carried out. For example in the Player script, the method for (player health change) is present 
+and is invoked. Other scripts like UImanager subscribes and applies its own method, This help structured our project as the decoupled code makes it 
+so scripts do not need direct references to each other and we do not need to manually set it in the inspector. Also if we change one part of a script,
+we can avoid console errors from having to change all the other scripts. Also makes it easier to read, as we don't need to understand
+what other code means, we just need to write our own method and apply it to the event. 
 
 ### Evelina Wang
 Since the check-in, I have contributed several improvements and bug fixes to the project. First, I modified the dialogue system to improve how conversations are displayed and handled. I worked on scripts such as DialogueUI and KeyQuestNPC to refine the dialogue flow and player interaction. In the DialogueUI class, I adjusted methods including ShowOne() and ShowTwoChoices() so that dialogue lines and player choices are displayed correctly. I also ensured that button callbacks trigger the appropriate dialogue responses. On the NPC side, I updated the KeyQuestNPC script so that the conversation logic properly handles different states of the quest, such as the introduction dialogue, checking whether the player has collected the required items, and giving the key reward once the quest is completed. These changes improved the structure and clarity of the dialogue system and made the interaction with the NPC more stable. Second, I fixed a bug where dialogue buttons could appear on the screen but could not be clicked by the player. This required debugging the UI interaction logic. I reviewed the button setup in Unity and corrected the event binding in the DialogueUI script. Specifically, I updated the button listener setup in the Awake() method and ensured that the Button.onClick events correctly call the dialogue selection logic. I also checked the UI hierarchy and interaction settings to make sure the buttons were not blocked by other UI elements. After these changes, the dialogue buttons now respond correctly when the player clicks them. Third, I fixed a gameplay bug related to the game timer. Previously, when the timer reached zero, the game would display the game over UI, but the player could still move and interact with objects. To fix this, I modified the UIManager script and connected it to the Player script. When the timer runs out (timeLeft <= 0), the UIManager now triggers the game-over logic. I added a method called ForceGameOver() in the Player class, which sets _canMove = false and resets movement input variables such as vertical and horizontal. This prevents the player from moving, jumping, or interacting after the game has ended. I also ensured that the GameEvents.OnPlayerDied event is invoked so that the UI and other systems properly transition to the game-over state.
