@@ -74,7 +74,7 @@ with huggy. The chair was tagged as ground so the player can jump on it but the 
 not being able to jump at all. I also hadded a collider underneath the table with Springtrap because player could somehow get under it. I added text in
 the start menu to tell wasd for movement and right click for camera rotation. 
 ### Ziying Huang
-Put your individual final Devlog here.
+Since the check-in, I made the door interaction and a checklist UI. For the door, I worked on the door interaction logic that checks whether the player has the required item before allowing the door to open. This is handled through the quest and item system where the required item is defined using the ItemId enum. The door checks the player’s inventory and only unlocks when the correct item is present. After the player opens the door and exits, I also updated the UI to display that the player has escaped. I also created a checklist UI so players can track which items they still need to collect. This system is managed through the QuestManager class, which stores a list of objectives using the CollectObjective structure with variables such as itemId and collected. The method CollectItem updates the checklist when the player picks up an item, and UpdateChecklistUI() updates the UI text to show which items are completed. In Unity, I built the checklist using UI GameObjects, including a checklist button and a TextMeshPro UI element to display the item list. The checklist appears after the player finishes the dialogue with the NPC and can be opened to view the player’s progress.
 
 ## Open-Source Assets
 [Freddy 3D model](https://sketchfab.com/3d-models/freddy-a086d08b955e476ca41f8af04adceaa0)-NPC
